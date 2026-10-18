@@ -198,6 +198,85 @@
 @media(prefers-reduced-motion:reduce){.film-light-leak{animation:none}.cinema.is-speaking.has-recorded-voice .movie-character.active svg{animation:none!important}#historia.passage-active:after{animation:none}}
 .cinema.motion-reduced .film-light-leak{animation:none}.cinema.motion-reduced .movie-character.active .actor-mouth{transition:none}
 
+
+/* V6 · Controles explícitos fuera del encuadre cinematográfico. */
+#historia{scroll-margin-top:12px}
+#historia .cinema{isolation:isolate}
+#historia .cinema .camera-rig,#historia .cinema .v4-closeup,#historia .cinema .d5-film-grain,#historia .cinema .v4-depth-glints{pointer-events:none}
+.story-console-v6{width:min(100%,1200px);margin:12px auto 0;padding:0 0 12px;display:flex;flex-direction:column;gap:0;border:1px solid #dab98c6d;border-radius:18px;background:linear-gradient(125deg,#1b1829,#292038);box-shadow:0 20px 55px #08050c48;overflow:visible;position:relative;z-index:3}
+.story-console-v6 .story-main-dock{padding:16px 19px 15px;position:relative;z-index:2;background:linear-gradient(110deg,#211b2d,#35253d);border-radius:18px 18px 0 0}
+.story-dock-meta{display:flex;align-items:center;gap:12px;color:#fff4de;margin:0 0 14px;flex-wrap:wrap}
+.story-dock-eyebrow{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:#eac79b;font-weight:700}
+.story-dock-meta strong{font-size:15px;letter-spacing:.01em;font-weight:650}
+.story-dock-counter{margin-left:auto;font-variant-numeric:tabular-nums;font:600 13px ui-sans-serif,system-ui;color:#e7c493;background:#ffffff10;padding:6px 11px;border-radius:100px;border:1px solid #e3c59a50}
+.story-console-v6 .console-controls.story-primary-actions{display:grid;grid-template-columns:minmax(180px,1.5fr) minmax(122px,1fr) minmax(170px,1.2fr);gap:10px;margin:0;align-items:stretch;justify-content:stretch}
+.story-console-v6 .console-controls.story-primary-actions .movie-btn{width:100%;min-height:52px;border-radius:13px;padding:12px 15px;font-size:14px;letter-spacing:.01em;line-height:1.3;white-space:normal;touch-action:manipulation;z-index:1;position:relative}
+.story-console-v6 .console-controls.story-primary-actions .movie-btn:focus-visible,.story-console-v6 summary:focus-visible,.story-console-v6 .story-settings-grid button:focus-visible{outline:3px solid #ffdc85;outline-offset:3px}
+.story-console-v6 #storyPlay{background:linear-gradient(115deg,#f4d49b,#c99b59);color:#282032;font-weight:900;border:1px solid #ffe7b0}
+.story-console-v6 #storyNext{background:#eee2cf;color:#2e2438;border:1px solid #e3c9a5;font-weight:800}
+.story-console-v6 #storyBack{background:#443249;color:#fff4e6;border:1px solid #9b7887}
+.story-console-v6 #storyAccept{grid-column:1/-1;background:linear-gradient(110deg,#f6dca8,#e6ba74);color:#2b1a35;font-weight:950;box-shadow:0 0 0 3px #f4d69533;font-size:18px;min-height:60px;animation:dockInvite 2.2s ease-in-out infinite}
+@keyframes dockInvite{50%{box-shadow:0 0 0 7px #f4d69525}}
+.story-console-v6 .story-timebar{display:flex;align-items:center;gap:14px;margin:13px 0 0;flex-basis:auto;padding:0;order:initial}
+.story-console-v6 .story-timebar .sounddesk-bar{flex:1;min-width:0}
+.story-console-v6 .story-timebar .sounddesk-label{min-width:125px;font-size:11px}
+.story-console-v6 .story-timebar .sounddesk-time{font-size:12px}
+.story-console-v6 .story-secondary-dock{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 16px;align-items:start;background:#161525;border-top:1px solid #b7997440}
+.story-console-v6 details{border:1px solid #ad937963;border-radius:12px;background:#282335;color:#f7e9d3;min-width:0;position:relative}
+.story-console-v6 details[open]{border-color:#eed09c;background:#302637}
+.story-console-v6 summary{display:flex;align-items:center;justify-content:space-between;min-height:48px;padding:11px 16px;cursor:pointer;list-style:none;font-weight:850;font-size:13px;user-select:none;touch-action:manipulation}
+.story-console-v6 summary::-webkit-details-marker{display:none}
+.story-console-v6 summary:after{content:'⌄';font-size:20px;font-weight:400;color:#eac99f}
+.story-console-v6 details[open] summary:after{transform:rotate(180deg)}
+.story-console-v6 .story-drawer-body{padding:0 15px 16px;border-top:1px solid #ffffff24;color:#eee0cd;line-height:1.65;font-size:13px}
+.story-console-v6 .story-drawer-body p{margin:12px 0 0;color:#f5e6d3}
+.story-settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:13px 0}
+.story-console-v6 .story-settings-grid button{min-width:0;min-height:48px;width:100%;font-size:12px;white-space:normal;padding:9px;border-radius:11px;cursor:pointer;touch-action:manipulation}
+.story-console-v6 .voice-info{padding:6px 0 0;display:block;color:#f6e4cc}
+.story-console-v6 .voice-info span{display:block;font-size:12px}
+.story-console-v6 .voice-info small{font-size:11px;color:#e2c7b9;display:block;margin-top:8px}
+.story-console-v6 .story-accessible-transcript{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.story-console-v6 .story-progress{padding:5px 17px 11px;margin:0;background:#161525;border-radius:0 0 18px 18px;min-height:16px}
+.story-console-v6 .story-progress .story-dot{pointer-events:none}
+#historia:fullscreen .story-console-v6{flex-shrink:0;margin:6px auto 0}
+#historia:fullscreen .story-console-v6 .story-main-dock{padding:9px 12px}
+#historia:fullscreen .story-console-v6 .story-dock-meta{margin-bottom:5px}
+#historia:fullscreen .story-console-v6 .story-secondary-dock{padding:6px 12px}
+#historia:fullscreen .story-console-v6 .story-progress{display:none}
+#historia:fullscreen .story-console-v6 .story-timebar{margin-top:5px}
+@media(max-width:680px){
+ .story-console-v6{width:calc(100% - 16px);margin:9px 8px 0;border-radius:15px}
+ .story-console-v6 .story-main-dock{padding:12px;border-radius:15px 15px 0 0}
+ .story-dock-meta{gap:7px;margin-bottom:11px}
+ .story-dock-meta strong{font-size:13px}
+ .story-dock-eyebrow{font-size:9px}
+ .story-console-v6 .console-controls.story-primary-actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .story-console-v6 #storyPlay{grid-column:1/-1}
+ .story-console-v6 #storyBack{grid-column:1}
+ .story-console-v6 #storyNext{grid-column:2}
+ .story-console-v6 #storyAccept{grid-column:1/-1}
+ .story-console-v6 .console-controls.story-primary-actions .movie-btn{min-height:52px;font-size:13px;padding:10px 6px}
+ .story-console-v6 .story-secondary-dock{padding:9px;gap:8px;grid-template-columns:1fr 1fr}
+ .story-console-v6 summary{font-size:11px;padding:9px;min-height:50px}
+ .story-console-v6 .story-timebar .sounddesk-label{display:none}
+ .story-console-v6 .story-timebar{gap:8px}
+ .story-console-v6 .story-settings-grid{grid-template-columns:1fr}
+ .story-console-v6 .story-progress{padding:5px 10px}
+ #historia:fullscreen .cinema{min-height:180px;height:40dvh}
+ #historia:fullscreen .story-console-v6 .story-secondary-dock{display:none}
+}
+@media(prefers-reduced-motion:reduce){.story-console-v6 #storyAccept{animation:none}}
+
+
+.repair-quickhelp{display:flex;flex-wrap:wrap;align-items:flex-start;gap:9px;margin:12px 18px 0;padding:0}
+.repair-quickhelp details{flex:1 1 220px;background:#fff7e8;border:1px solid #cfac79;border-radius:12px;color:#523a4c;min-width:180px}
+.repair-quickhelp summary{cursor:pointer;font-weight:800;padding:13px 15px;min-height:45px;touch-action:manipulation}
+.repair-quickhelp p{padding:0 15px;line-height:1.65;font-size:13px}
+.repair-quickhelp button{border:1px solid #e0bc83;background:#583d57;color:#fff3de;border-radius:12px;min-height:45px;padding:10px 15px;font-weight:800;cursor:pointer}
+.repair-quickhelp #goRepairAction{margin:0 15px 13px}
+.repair-quickhelp .repair-shortcut{background:#f4d69b;color:#32233a;border-color:#b78750;flex:1 1 185px}
+#task{scroll-margin-top:30px}
+@media(max-width:680px){.repair-quickhelp{margin:9px 10px 0}.repair-quickhelp button{font-size:12px}}
 </style><style>/* EDICION CINEMATICA — Dirección artística y sistema visual */
 :root{--midnight:#0c1020;--abyss:#17182e;--violet:#2c203f;--lightgold:#f8e0aa;--ivory:#fff9ed;--pink:#f0b2c2;--teal:#bce7d6;}
 html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
@@ -611,25 +690,30 @@ body{background:#0a0b18}
   <div class="cinema-filmstrip"></div>
   <div class="film-light-leak" aria-hidden="true"></div><div class="film-vignette" aria-hidden="true"></div>
  </div>
- <div class="story-console" aria-label="Control de la historia">
-  <div class="console-copy"><div class="console-chapter" id="filmCount">01</div><div class="console-info"><small id="filmWho">PRÓLOGO · NARRADOR</small><p id="filmWords" aria-live="polite">Dicen que en el País de las Maravillas hubo una tarde en que todos los relojes olvidaron caminar…</p></div></div>
-  <div class="console-controls"><button class="movie-btn gold" id="storyPlay" type="button">▶ Reproducir escena</button><button class="movie-btn" id="storyBack" type="button" aria-label="Volver al diálogo anterior">← Anterior</button><button class="movie-btn" id="storyNext" type="button">Siguiente diálogo →</button><button class="movie-btn" id="storyVoice" type="button" aria-pressed="true">🔊 Doblaje: sí</button><button class="movie-btn" id="storySkip" type="button">Saltar a la pregunta ↗</button><button class="movie-btn primary-final" id="storyAccept" type="button" hidden>✧ Sí, acepto sus encargos →</button><button class="movie-btn" id="storyReplay" type="button">↺ Repetir</button><button class="movie-btn" id="storyMotion" type="button" aria-pressed="true" title="Reducir o activar movimientos cinematográficos">🎞 Movimiento: sí</button><button class="movie-btn" id="storyProjection" type="button" aria-label="Abrir proyección a pantalla completa">⛶ Proyección</button></div>
-  <div class="film-instruction" id="filmInstruction" role="status"><span class="film-instruction-star" aria-hidden="true">✦</span><span><strong>Empezá por la escena.</strong> Presioná «Reproducir escena» para escuchar a los personajes. También podés pasar una frase a la vez. Al final aparecerá la invitación para entrar al taller.</span></div>
-  <div class="voice-row" id="voiceControls"><div class="voice-picker"><span>🎙️ 9 grabaciones originales incorporadas</span></div><div class="voice-info"><span class="voice-indicator" id="voiceState" role="status">Doblaje cargado · listo para empezar</span><small>La Oruga (dos frases) y el coro final esperan grabación: mientras tanto se muestran subtítulos sin voz robótica.</small></div></div>
-  <div class="cinema-sounddesk" aria-label="Banda sonora y avance del diálogo">
-   <button class="soundtrack-toggle" type="button" id="storyScore" aria-pressed="false">♫ Activar banda sonora</button>
-   <div class="sounddesk-timeline"><span class="sounddesk-label" id="soundCue">🎙 Audio del personaje</span><div class="sounddesk-bar" id="soundTimeline" role="progressbar" aria-label="Progreso de la intervención hablada" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="soundTimelineFill"></span></div></div>
-   <span class="sounddesk-time" id="soundTime">00:00</span>
-  </div>
-  <div class="story-progress" id="storyDots" aria-label="Avance del prólogo"></div>
- </div><p class="finale-prompt" id="finalePrompt">Cinco miradas. Una pregunta. La aventura empieza con tu respuesta.</p>
+ <div class="story-console story-console-v6" aria-label="Controles de la historia">
+ <div class="story-main-dock" aria-label="Reproducción de la historia">
+   <div class="story-dock-meta"><span class="story-dock-eyebrow">✦ LA MESA DEL TÉ</span><strong id="storyDockStatus">Escuchá a los personajes</strong><span class="story-dock-counter"><span id="filmCount">01</span> / 12</span></div>
+   <div class="console-controls story-primary-actions">
+      <button class="movie-btn gold story-big-action" id="storyPlay" type="button">▶ Reproducir escena</button>
+      <button class="movie-btn story-direction" id="storyBack" type="button" aria-label="Diálogo anterior">← Anterior</button>
+      <button class="movie-btn story-direction" id="storyNext" type="button">Siguiente diálogo →</button>
+      <button class="movie-btn primary-final story-big-action" id="storyAccept" type="button" hidden>✧ Sí, acepto sus encargos →</button>
+   </div>
+   <div class="sounddesk-timeline story-timebar" aria-label="Duración del diálogo actual"><span class="sounddesk-label" id="soundCue">Audio del personaje</span><div class="sounddesk-bar" id="soundTimeline" role="progressbar" aria-label="Progreso del audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="soundTimelineFill"></span></div><span class="sounddesk-time" id="soundTime">00:00</span></div>
+ </div>
+ <div class="story-secondary-dock"><details class="story-guide" id="storyGuide"><summary>❔ ¿Cómo se juega?</summary><div class="story-drawer-body"><p>Primero escuchá la conversación. Tocá <b>Reproducir escena</b> para escuchar todo, o usá <b>Siguiente diálogo</b> para ir frase por frase.</p><p>Cuando los cinco personajes te miren y pregunten <b>«¿Aceptás nuestros encargos?»</b>, aparecerá un botón grande para entrar al taller. Allí cada reloj indica su siguiente paso.</p><p>Podés repetir, adelantar o retroceder sin perder los encargos completados.</p></div></details>
+ <details class="story-settings" id="storySettings"><summary>⚙ Ajustes de reproducción</summary><div class="story-drawer-body"><div class="story-settings-grid"><button class="movie-btn" id="storyVoice" type="button" aria-pressed="true">🔊 Doblaje: sí</button><button class="movie-btn" id="storyMotion" type="button" aria-pressed="true" title="Reducir o activar movimientos cinematográficos">🎞 Movimiento: sí</button><button class="soundtrack-toggle" id="storyScore" type="button" aria-pressed="false">♫ Activar banda sonora</button><button class="movie-btn" id="storyProjection" type="button" aria-label="Abrir proyección a pantalla completa">⛶ Proyección</button></div><div class="story-settings-grid"><button class="movie-btn" id="storyReplay" type="button">↺ Repetir escena</button><button class="movie-btn" id="storySkip" type="button">Saltar a la pregunta ↗</button></div><div class="voice-info"><span class="voice-indicator" id="voiceState" role="status">Doblaje cargado · listo para empezar</span><small>Hay 9 grabaciones originales. Las dos intervenciones de la Oruga y el coro final se muestran con subtítulos hasta que se incorporen sus audios.</small></div></div></details>
+ </div>
+ <div class="story-accessible-transcript"><span class="story-script-label" id="filmWho">PRÓLOGO · NARRADOR</span><p id="filmWords" aria-live="polite">Dicen que en el País de las Maravillas hubo una tarde en que todos los relojes olvidaron caminar…</p></div>
+ <div class="story-progress" id="storyDots" aria-label="Avance de los diálogos"></div>
+</div><p class="finale-prompt" id="finalePrompt">Cinco miradas. Una pregunta. La aventura empieza con tu respuesta.</p>
 </section>
 <section class="world" id="taller" hidden aria-labelledby="chapter-title"><div class="content">
  <div class="world-heading"><div><div class="kicker">✧ CAPÍTULO II · EL PRIMER ENCARGO</div><h2 id="chapter-title">Ahora sos <em>el relojero.</em></h2></div><div class="progresswrap" aria-label="Progreso del juego"><div class="progresslabel"><span>ENCARGOS RESUELTOS</span><strong id="progressText">0 de 5</strong></div><div class="progressbar"><span id="progressBar"></span></div></div></div>
  <main class="layout">
  <aside class="panel sidebar" aria-label="Visitantes del taller"><div class="section-title">✦ LOS VISITANTES · EN ORDEN</div><nav class="client-list" id="clients" aria-label="Elegir encargo"></nav><div class="sidebar-note"><strong>Una nota de Alicia ✉</strong><p>No hace falta saber de relojes para empezar. Seguí las pistas, probá sin miedo y descubrí algo nuevo en cada visita.</p></div></aside>
  <section class="panel main" aria-label="Juego de reparación"><div class="casehead"><div><span class="tag" id="caseTag">ENCARGO 01 · LA VISITA</span><h2 id="caseName" tabindex="-1">El Conejo Blanco</h2><p id="caseType">Reloj de bolsillo · Mecánico</p></div><span class="case-no" id="caseNo" aria-hidden="true">01</span></div>
- <div class="coach-panel" id="coach" role="status"></div><div class="steps" id="steps" aria-label="Etapas de reparación"></div>
+ <div class="coach-panel" id="coach" role="status"></div><div class="repair-quickhelp"><details><summary>❔ ¿Dónde toco para reparar?</summary><p>Seguí la instrucción resaltada. Primero escuchás al cliente, luego inspeccionás, elegís el diagnóstico y usás las herramientas. Podés tocar una herramienta y después tocar la parte brillante del reloj; no es obligatorio arrastrar.</p><button type="button" id="goRepairAction">Ir a los controles del reloj ↓</button></details><button type="button" class="repair-shortcut" id="repairShortcut">↓ Ir a mi siguiente acción</button></div><div class="steps" id="steps" aria-label="Etapas de reparación"></div>
  <div class="arrival-stage" id="arrivalStage" aria-label="Escena del visitante del País de las Maravillas">
   <div class="stage-haze" aria-hidden="true"></div><div class="stage-star stage-star-a" aria-hidden="true">✧</div><div class="stage-star stage-star-b" aria-hidden="true">✦</div><div class="stage-star stage-star-c" aria-hidden="true">✧</div>
   <div class="fairy-door" aria-hidden="true"><div class="doorframe"><span class="door-twinkle">✦<br>✧　✦</span></div><div class="doorstep"></div></div>
@@ -913,8 +997,7 @@ body{background:#0a0b18}
    else if((!path||unavailableClips.has(path)) && line.who==='caterpillar')state.textContent='Oruga Azul: audio pendiente · subtítulos activos';
    else if((!path||unavailableClips.has(path)) && line.who==='all')state.textContent='Pregunta final: coro pendiente · subtítulos activos';
    else if(currentAudio && !currentAudio.paused)state.textContent='Reproduciendo la grabación de '+filmWho[line.who]+'…';
-   else state.textContent='Listo para reproducir · '+filmWho[line.who];
- }
+   else state.textContent='Listo para reproducir · '+filmWho[line.who]; }
  function advanceAfterAudio(session){
    if(session!==filmSession||!filmPlaying)return;
    if(filmIndex<MOVIE_LINES.length-1){
@@ -997,7 +1080,8 @@ const shell=$('cinema');applyShot(who);shell.dataset.speaker=who;shell.classList
    setTimeout(enter,reduced?10:1050);
  }
  function setupCinema(){const cast=$('movieCast');cast.innerHTML=CASES.map(c=>`<div class="movie-character" data-person="${c.id}" role="img" aria-label="${c.name} sentado en la mesa del té"><span class="speech-rune" aria-hidden="true">✦ ♫</span>${characterSvg(c.id)}<span class="guest-name">${c.short}</span></div>`).join('');const stars=$('movieStars');stars.innerHTML=Array.from({length:35},(_,i)=>`<i class="scene-star" style="--sx:${(i*97+23)%99}%;--sy:${(i*41+9)%95}%;--size:${(i%3)+2}px;--delay:${-(i*7%13)/3}s;--t:${(i%5)+3}s"></i>`).join('');renderCinema();
- $('storyNext').addEventListener('click',nextCinema); $('storyBack').addEventListener('click',previousCinema);
+ $('storyNext').addEventListener('click',nextCinema);
+ $('storyBack').addEventListener('click',previousCinema);
  $('storyMotion').addEventListener('click',()=>{filmMotion=!filmMotion;renderCinema();});
  $('storyScore').addEventListener('click',toggleScore);updateScoreButton();
  $('storyProjection').addEventListener('click',async()=>{
@@ -1091,4 +1175,9 @@ const shell=$('cinema');applyShot(who);shell.dataset.speaker=who;shell.classList
  <div class="d5-interlude-halo" aria-hidden="true"><div class="d5-interlude-clock"><span>Ⅻ</span><i></i><b>Ⅵ</b></div></div>
  <div class="d5-interlude-copy"><small>✦ CAPÍTULO II · EL TALLER DEL TIEMPO ✦</small><h2>Tu primer encargo<br><em>te está esperando.</em></h2><p>Un reloj. Un misterio. Tus manos.</p></div>
 </div>
+<script>
+(()=>{const task=document.getElementById('task');for(const id of ['goRepairAction','repairShortcut']){const b=document.getElementById(id);if(b)b.addEventListener('click',()=>{task?.scrollIntoView({behavior:'smooth',block:'center'});const action=task?.querySelector('button:not([disabled]),[role=button]');if(action)setTimeout(()=>action.focus({preventScroll:true}),300);});}
+const play=document.getElementById('storyPlay');const status=document.getElementById('storyDockStatus');if(play&&status){let observer=new MutationObserver(()=>{const accepting=document.getElementById('storyAccept');status.textContent=accepting&&!accepting.hidden?'Ahora te están hablando a vos':'Escuchá a los personajes';});observer.observe(play,{childList:true,subtree:true});observer.observe(document.getElementById('storyAccept'),{attributes:true,attributeFilter:['hidden']});}
+})();
+</script>
 </body></html>
