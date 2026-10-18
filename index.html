@@ -611,6 +611,30 @@ body{background:#0a0b18}
 #taller[data-phase="solved"] .workbench{box-shadow:inset 0 0 90px #b6d9a077}
 .world .main .workbench:before{content:'✦ · APRENDÉ A DOMINAR EL TIEMPO · ✦';font:700 11px Georgia;letter-spacing:.24em;text-shadow:0 2px 8px #fff9e4;color:#67485b;opacity:.56;top:26px;left:50%;transform:translateX(-50%);white-space:nowrap;z-index:0}
 @media(max-width:780px){.world .main .workbench:before{font-size:8px;letter-spacing:.08em;top:24px}}
+</style><style>
+/* FIN DE ESCENA: sin controles, sin reinicio, solo el cierre de la historia */
+.ending-film[hidden]{display:none!important}
+.ending-film{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:#101222;opacity:0;transition:opacity 1250ms ease;isolation:isolate}
+.ending-film.is-visible{opacity:1}
+.ending-frame.cinema{position:absolute;inset:0;display:block;width:100%;height:100%;min-height:0;max-width:none;margin:0;border:0;border-radius:0;overflow:hidden;background:radial-gradient(ellipse 80% 72% at 50% 35%,#79604d,#171827 79%)}
+.ending-artwork{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.ending-frame .camera-rig{--camera-zoom:1!important;--camera-focus:50%!important;transform:none!important;transition:none!important}
+.ending-frame .v4-closeup,.ending-frame .cinema-shot-indicator,.ending-frame .cinema-chapter-stamp{display:none!important}
+.ending-frame .movie-character{opacity:1!important;filter:brightness(1.12) saturate(1.2) drop-shadow(0 15px 13px #140f2266)!important;--idle:0deg;--scale:1;transition:none!important}
+.ending-frame .movie-character svg{animation:ending-gather 5.5s ease-in-out infinite alternate}
+.ending-frame .prop-cup{animation:ending-cups 4.6s ease-in-out infinite alternate}
+.ending-frame .prop-teapot{filter:drop-shadow(0 0 18px #f7d09355)}
+.ending-shade{position:absolute;inset:0;z-index:15;pointer-events:none;background:linear-gradient(180deg,#0e14202e 0%,transparent 37%,#0b0c16a3 73%,#080c18ee 100%),radial-gradient(ellipse at 50% 95%,#51384d5c,transparent 70%)}
+.ending-copy{position:absolute;z-index:20;left:4%;right:4%;bottom:11%;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;color:#fff8e8;text-shadow:0 4px 24px #100d24,0 2px 6px #160e1a}
+.ending-rule{width:min(160px,30vw);height:1px;background:linear-gradient(90deg,transparent,#f5dca8 40%,#f5dca8 60%,transparent);opacity:.9;margin-bottom:8px}
+.ending-copy h2{margin:0;font:700 clamp(18px,2.4vw,32px)/1.3 Georgia,'Times New Roman',serif;letter-spacing:.38em;text-indent:.38em;color:#ffedc3;opacity:0;animation:ending-text 1100ms 850ms ease forwards}
+.ending-copy p{margin:0;font:italic 400 clamp(30px,6vw,82px)/1.12 Georgia,'Times New Roman',serif;letter-spacing:-.035em;opacity:0;animation:ending-text 1400ms 1550ms ease forwards}
+.ending-film::after{content:'';position:absolute;z-index:25;inset:0;pointer-events:none;box-shadow:inset 0 0 110px #0709159c,inset 0 0 28px #03040b80}
+@keyframes ending-text{from{opacity:0;transform:translateY(12px);filter:blur(7px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes ending-gather{from{translate:0 0}to{translate:0 -4px}}
+@keyframes ending-cups{from{translate:0 0}to{translate:0 -3px}}
+@media(max-width:700px){.ending-frame .movie-character{width:clamp(70px,19vw,120px);height:43%;bottom:25%}.ending-copy{bottom:12%;gap:12px}.ending-copy h2{font-size:19px;letter-spacing:.23em;text-indent:.23em}.ending-copy p{font-size:clamp(31px,9vw,52px)}.ending-film::after{box-shadow:inset 0 0 60px #03040f91}}
+@media(prefers-reduced-motion:reduce){.ending-film{transition:none}.ending-frame .movie-character svg,.ending-frame .prop-cup{animation:none}.ending-copy h2,.ending-copy p{animation:none;opacity:1}}
 </style></head><body>
 
 <header class="site-header" id="inicio"><a class="brand" href="#historia"><span class="brandmark" aria-hidden="true">✦</span><span><strong>El Taller del Tiempo</strong><small>UNA PELÍCULA PARA JUGAR</small></span></a><nav class="navigation" aria-label="Navegación"><a href="#historia">La historia</a><a href="#taller" onclick="return !document.getElementById('taller').hidden">Los encargos</a><a href="#cuaderno" onclick="return !document.getElementById('taller').hidden">El cuaderno</a></nav><div class="topactions"><span class="topstars" id="stars" aria-label="Estrellas obtenidas">0 estrellas</span><button class="ghost" id="sound" type="button" aria-pressed="false">♫ Efectos: no</button></div></header>
@@ -787,6 +811,26 @@ body{background:#0a0b18}
  function diagnose(index){let c=getCase();if(index===c.answer){phase='repair';changePhaseDialogue();notice=c.why;noticeKind='good';miniTone(650);render();}else{errors++;miniTone(230);note(c.wrong,'bad');}}
  function inspect(){phase='inspect';changePhaseDialogue();notice='';miniTone(460);render();}
  function celebrate(){if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;const box=document.createElement('div');box.className='celebration';box.setAttribute('aria-hidden','true');const colors=['#f9d89c','#eac3df','#b5d5c5','#f7a5a8','#8d6ba6'];for(let i=0;i<55;i++){const item=document.createElement('i');item.style.setProperty('--x',Math.floor(Math.random()*100)+'%');item.style.setProperty('--size',(5+Math.random()*7)+'px');item.style.setProperty('--color',colors[i%colors.length]);item.style.setProperty('--duration',(2.2+Math.random()*2.1)+'s');item.style.setProperty('--delay',(Math.random()*.5)+'s');item.style.setProperty('--sway',(-100+Math.random()*200)+'px');box.appendChild(item)}document.body.appendChild(box);setTimeout(()=>box.remove(),4900)}
+ let endingStarted=false;
+ function launchEnding(){
+   if(endingStarted)return;
+   endingStarted=true;
+   // La película termina contemplativamente: ninguna opción interactiva aparece sobre la escena.
+   try{stopCinema();}catch{}
+   const layer=document.getElementById('endingFilm'),slot=document.getElementById('endingArtwork');
+   const scene=document.getElementById('cameraRig');
+   if(scene&&slot){
+     scene.style.setProperty('--camera-zoom','1');
+     scene.style.setProperty('--camera-focus','50%');
+     slot.appendChild(scene);
+   }
+   layer.hidden=false;
+   document.body.classList.add('ending-active');
+   document.body.style.overflow='hidden';
+   for(const part of document.body.children){if(part!==layer && part.tagName!=='SCRIPT')part.inert=true;}
+   layer.focus({preventScroll:true});
+   requestAnimationFrame(()=>layer.classList.add('is-visible'));
+ }
  function validate(){let win=false,feedback='';switch(getCase().id){
  case 'rabbit':win=repairs.winds>=6;feedback='Faltan algunas vueltas suaves de corona. Completá seis para cargar el muelle.';break;
  case 'hatter':win=repairs.clean>=3&&repairs.polarity==='up';feedback=repairs.clean<3?'Todavía quedan contactos por limpiar.':repairs.polarity===null?'Colocá la pila respetando la polaridad.':'Probá con el polo positivo (+) hacia arriba, como indica este compartimiento.';break;
@@ -794,7 +838,7 @@ body{background:#0a0b18}
  case 'cat':win=repairs.b==='ccw'&&repairs.c==='cw';feedback='Comprobá cada pareja de engranajes: los que se tocan deben girar al revés uno del otro.';break;
  case 'queen':win=repairs.minute===390;feedback='Todavía no marca las 6:30. Seguí moviendo las agujas con los controles.';break;
  }
- if(win){phase='solved';changePhaseDialogue();selectedTool=null;let stars=Math.max(1,3-Math.floor(errors/2));saved[getCase().id]={stars};try{localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));}catch{}notice='';miniTone(784);setTimeout(()=>miniTone(988),110);render();celebrate();}else{errors++;miniTone(250);note(feedback,'bad');}}
+ if(win){phase='solved';changePhaseDialogue();selectedTool=null;let stars=Math.max(1,3-Math.floor(errors/2));saved[getCase().id]={stars};try{localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));}catch{}notice='';miniTone(784);setTimeout(()=>miniTone(988),110);render();celebrate();if(current===CASES.length-1&&CASES.every(c=>saved[c.id]))setTimeout(()=>{if(phase==='solved'&&current===CASES.length-1)launchEnding();},1200);}else{errors++;miniTone(250);note(feedback,'bad');}}
  function faceSvg(time,kind){const hours=Math.floor(time/60)%12, mins=time%60;const ha=hours*30+mins*.5,ma=mins*6;let ticks=Array.from({length:60},(_,i)=>{let a=i*6*Math.PI/180,large=i%5===0;let r1=large?91:95,r2=102,x1=260+Math.sin(a)*r1,y1=175-Math.cos(a)*r1,x2=260+Math.sin(a)*r2,y2=175-Math.cos(a)*r2;return `<line x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}" stroke="#826d76" stroke-width="${large?2.5:1}" opacity="${large?1:.6}"/>`}).join('');
  let labels=[12,3,6,9].map((n,i)=>{let a=i*Math.PI/2;return `<text x="${260+Math.sin(a)*78}" y="${179-Math.cos(a)*78}" font-family="Georgia,serif" font-size="19" text-anchor="middle" dominant-baseline="middle" fill="#72526f">${n}</text>`}).join('');
  let detail=kind==='quartz'?'<text x="260" y="227" font-size="9" text-anchor="middle" font-weight="bold" letter-spacing="4" fill="#b58e5e">QUARTZ</text>':kind==='royal'?'<text x="260" y="228" font-size="12" text-anchor="middle" fill="#c49662">♥ ♛ ♥</text>':'<text x="260" y="225" font-family="Georgia,serif" font-size="14" font-style="italic" text-anchor="middle" fill="#b48d68">Wonderland</text>';
@@ -815,7 +859,7 @@ body{background:#0a0b18}
  case 'cat':return `<h3>Descifrá el tren de engranajes</h3><p>El engranaje A gira ↻ (horario). Elegí el sentido de B y C para que las ruedas puedan transmitir el movimiento.</p><div class="gear-btns"><button type="button" class="gear-button" data-click="gear-b">Engranaje B <span>${repairs.b==='cw'?'↻':'↺'}</span>Tocar para girar</button><button type="button" class="gear-button" data-click="gear-c">Engranaje C <span>${repairs.c==='cw'?'↻':'↺'}</span>Tocar para girar</button></div><button class="btn primary" type="button" data-click="test">✓ Probar engranajes</button>`;
  case 'queen':return `<h3>Las agujas del palacio</h3><p>El reloj está en las 2:00. Llevalo exactamente a <strong>6:30</strong> y mirá cómo se mueven las dos agujas juntas.</p><div class="time-display" aria-label="Hora actual">${formatTime(repairs.minute)} <span style="font:12px system-ui;color:#85768b">→ objetivo 06:30</span></div><div class="btnrow"><button type="button" class="btn secondary" data-click="hour">+ 1 hora</button><button type="button" class="btn secondary" data-click="quarter">+ 15 minutos</button><button type="button" class="btn alt" data-click="undo-quarter">↶ − 15 minutos</button><button type="button" class="btn primary" data-click="test">✓ Probar reloj</button></div>`;
  }}
- function solvedUi(){let c=getCase(),stars=saved[c.id]?.stars||3,all=CASES.every(x=>saved[x.id]);return `<div class="completed confetti"><span class="big" aria-hidden="true">${all?'🏆':'✨'}</span><h3>${all?'¡El taller está lleno de magia!':'¡Reparación completada!'}</h3><div style="color:#ba8845;font-size:20px;letter-spacing:4px" aria-label="${stars} estrellas">${'★'.repeat(stars)}${'☆'.repeat(3-stars)}</div><p>${c.result}${all?' ¡Resolviste los cinco encargos y ya conocés cinco secretos de relojería!':''}</p><div class="btnrow" style="justify-content:center"><button type="button" class="btn secondary" data-click="repeat">↺ Repetir caso</button><button type="button" class="btn gold" data-click="next">${all?'Volver al primer encargo':'→ Siguiente visitante'}</button></div></div>`;}
+ function solvedUi(){let c=getCase(),stars=saved[c.id]?.stars||3,all=CASES.every(x=>saved[x.id]);if(all&&current===CASES.length-1)return `<div class="completed" role="status"><h3>¡El último reloj volvió a funcionar!</h3><p>La merienda está a salvo…</p></div>`;return `<div class="completed confetti"><span class="big" aria-hidden="true">${all?'🏆':'✨'}</span><h3>${all?'¡El taller está lleno de magia!':'¡Reparación completada!'}</h3><div style="color:#ba8845;font-size:20px;letter-spacing:4px" aria-label="${stars} estrellas">${'★'.repeat(stars)}${'☆'.repeat(3-stars)}</div><p>${c.result}${all?' ¡Resolviste los cinco encargos y ya conocés cinco secretos de relojería!':''}</p><div class="btnrow" style="justify-content:center"><button type="button" class="btn secondary" data-click="repeat">↺ Repetir caso</button><button type="button" class="btn gold" data-click="next">${all?'Volver al primer encargo':'→ Siguiente visitante'}</button></div></div>`;}
  function renderTaskOnly(){let c=getCase(),text='';if(phase==='welcome')text=`<h3>¿Aceptás este encargo?</h3><p>Escuchá al cliente. Tu primer trabajo es inspeccionar el reloj antes de tocar sus piezas.</p><button type="button" class="btn primary" data-click="inspect">✨ Aceptar este encargo e inspeccionar</button>`;
  else if(phase==='inspect')text=`<h3>¿Qué revela la inspección?</h3><p>${c.clue}</p><div class="choices">${c.choices.map((choice,i)=>`<button type="button" class="choice" data-diagnosis="${i}">${String.fromCharCode(65+i)}. ${choice}</button>`).join('')}</div>`;
  else if(phase==='repair')text=repairUi();else text=solvedUi();
@@ -953,8 +997,7 @@ body{background:#0a0b18}
    const API=window.AudioContext||window.webkitAudioContext;
    if(!API){$('soundCue').textContent='Música no disponible en este navegador';return;}
    if(!scoreContext){
-     scoreContext=new API();scoreGain=scoreContext.createGain();scoreGain.gain.value=0;
-     const filter=scoreContext.createBiquadFilter();filter.type='lowpass';filter.frequency.value=1000;filter.Q.value=.28;
+     scoreContext=new API();scoreGain=scoreContext.createGain();scoreGain.gain.value=0;     const filter=scoreContext.createBiquadFilter();filter.type='lowpass';filter.frequency.value=1000;filter.Q.value=.28;
      scoreGain.connect(filter);filter.connect(scoreContext.destination);
      // Tríadas flotantes muy tenues. Música sintetizada original, sin archivos externos.
      [[174.61,.39],[261.63,.21],[349.23,.18],[440,.11],[698.46,.06]].forEach(([hz,weight],i)=>{
@@ -997,7 +1040,8 @@ body{background:#0a0b18}
    else if((!path||unavailableClips.has(path)) && line.who==='caterpillar')state.textContent='Oruga Azul: audio pendiente · subtítulos activos';
    else if((!path||unavailableClips.has(path)) && line.who==='all')state.textContent='Pregunta final: coro pendiente · subtítulos activos';
    else if(currentAudio && !currentAudio.paused)state.textContent='Reproduciendo la grabación de '+filmWho[line.who]+'…';
-   else state.textContent='Listo para reproducir · '+filmWho[line.who]; }
+   else state.textContent='Listo para reproducir · '+filmWho[line.who];
+ }
  function advanceAfterAudio(session){
    if(session!==filmSession||!filmPlaying)return;
    if(filmIndex<MOVIE_LINES.length-1){
@@ -1180,4 +1224,8 @@ const shell=$('cinema');applyShot(who);shell.dataset.speaker=who;shell.classList
 const play=document.getElementById('storyPlay');const status=document.getElementById('storyDockStatus');if(play&&status){let observer=new MutationObserver(()=>{const accepting=document.getElementById('storyAccept');status.textContent=accepting&&!accepting.hidden?'Ahora te están hablando a vos':'Escuchá a los personajes';});observer.observe(play,{childList:true,subtree:true});observer.observe(document.getElementById('storyAccept'),{attributes:true,attributeFilter:['hidden']});}
 })();
 </script>
+<section id="endingFilm" class="ending-film" hidden role="region" aria-labelledby="endingTitle" tabindex="-1">
+  <div class="ending-frame cinema" id="endingFrame" aria-hidden="true"><div class="ending-artwork" id="endingArtwork"></div><div class="ending-shade"></div></div>
+  <div class="ending-copy"><div class="ending-rule" aria-hidden="true"></div><h2 id="endingTitle">FIN DE ESCENA</h2><p>Salvaste la merienda.</p></div>
+</section>
 </body></html>
