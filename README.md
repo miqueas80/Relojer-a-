@@ -42,3 +42,25 @@ Los videos provienen de películas ajenas. El uso en una actividad escolar y la 
 - Regresión superada: cinco relojes reparables, pruebas de interfaz escritorio/móvil sin errores JavaScript observados.
 
 **Pendiente de producción de alta fidelidad:** modelado/rig artístico avanzado, sincronización labial real por audio y mezcla cinematográfica. No confundir la animación de boca actual con lipsync real.
+
+
+---
+
+## Producción cinematográfica V3 — 18/10/2026
+# El Taller del Tiempo — Pase de producción cinematográfica V3
+
+Puesta en escena de cinco personajes en la mesa del té y cinco reparaciones educativas.
+
+## Cambios realizados
+- Boca guiada por la **envolvente de amplitud** real de los nueve MP3 originales (50 ms por muestra); cuando hay silencio, el personaje deja de mover la boca. Esto **no equivale a sincronización fonética por visemas**.
+- Control de pista con cronómetro de reproducción del diálogo.
+- Banda sonora generativa original opcional, activada expresamente por el espectador, con volumen reducido al hablar.
+- Iluminación dramática por personaje, luz volumétrica simulada y transición visual de la mesa al taller.
+- Conservados los cinco juegos y los 9 MP3 y 6 medios que ya estaban alojados.
+- Los archivos Oruga.mp3, Oruga2.mp3 y Todos.mp3 se usarán automáticamente si se suben a audio/; mientras falten, se mantienen subtítulos.
+
+## Limitaciones
+Las ilustraciones siguen siendo 2.5D y la animación de boca detecta energía, no fonemas ni expresión actoral real. No equivale a una película 3D profesional.
+
+## Modo de exhibición
+El botón «⛶ Proyección» abre la escena a pantalla completa en navegadores compatibles. Los subtítulos continúan visibles y podés usar flechas del teclado para retroceder o avanzar.
