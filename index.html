@@ -49,7 +49,7 @@
 @media(max-width:360px){.stage-dialogue p{font-size:12px}.talk-button{font-size:9px}.arrival-stage{grid-template-columns:39% 61%}.character-frame{width:41%}}
 @media(prefers-reduced-motion:reduce){.stage-haze,.stage-star,.character-frame,.character-frame svg,.art svg .drop-zone-ring{animation:none!important}}
 
-/* Prólogo audiovisual: material de referencia para previsualización privada. */
+/* Prólogo audiovisual para exposición escolar local. */
 .preview-reel{min-height:min(92svh,810px);padding:24px clamp(15px,3.5vw,56px) 35px;background:radial-gradient(ellipse at 50% -15%,#5c325a 0%,transparent 56%),#100f19;color:#ffefdc;position:relative;isolation:isolate}
 .preview-reel::before{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(#fde1b5a8 1px,transparent 1px);background-size:87px 89px;opacity:.3;pointer-events:none}
 .preview-top{max-width:1400px;margin:0 auto 15px;display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.19em;color:#e8c899}
@@ -81,6 +81,14 @@
 @keyframes previewPulse{50%{opacity:.35;box-shadow:0 0 20px #ffcf8d}}
 @media(max-width:700px){.preview-reel{padding:13px 12px 28px;min-height:0}.preview-top{flex-direction:column;align-items:flex-start;gap:7px}.preview-top b{font-size:15px}.preview-label{white-space:normal;font-size:9px}.preview-screen{min-height:540px;aspect-ratio:9/12;border-radius:14px}.preview-chapter{top:15px;left:17px;letter-spacing:.1em}.preview-heading{bottom:24px;left:20px;right:15px}.preview-heading h2{font-size:48px}.preview-heading p{font-size:13px}.preview-controls{align-items:stretch}.preview-actions{width:100%;display:grid;grid-template-columns:1fr 1fr}.preview-btn{padding:13px 10px}.preview-btn.preview-primary{grid-column:1/-1}.preview-status{width:100%;justify-content:space-between}.preview-track{max-width:45vw}.preview-note{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.preview-chapter span{animation:none}.preview-btn{transition:none}}
+/* Controles de la edición escolar: objetivos táctiles claros */
+.preview-actions{max-width:100%}.preview-btn{min-height:48px}
+#previewMode{border-color:#ead39c8e;color:#ffe7c3}
+#previewMode[aria-pressed="true"]{background:#594064;color:#fff1d9}
+#previewSound[aria-pressed="true"]{background:#514a38;color:#ffe9b9}
+.preview-reel.school-finale .preview-heading h2{color:#fff7e0}
+@media(max-width:700px){.preview-actions{grid-template-columns:1fr 1fr!important}.preview-btn.preview-primary{grid-column:1/-1}.preview-status{width:100%}}
+
 
 </style><style>/* EDICION CINEMATICA — Dirección artística y sistema visual */
 :root{--midnight:#0c1020;--abyss:#17182e;--violet:#2c203f;--lightgold:#f8e0aa;--ivory:#fff9ed;--pink:#f0b2c2;--teal:#bce7d6;}
@@ -187,7 +195,28 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
 .voice-info .voice-indicator{color:#fae0ae;font-size:12px;font-weight:800}
 .voice-info small{color:#cfbacc;font-size:11px;line-height:1.5}
 @media(max-width:760px){.voice-row{align-items:stretch}.voice-picker,.voice-info{width:100%;text-align:left}.voice-picker select{width:100%}}
-</style></head><body>
+
+#storyPlay.school-start{animation:schoolGlow 1.4s ease-in-out infinite;outline:3px solid #f7d48e;outline-offset:4px}@keyframes schoolGlow{50%{box-shadow:0 0 24px #e6b15dcc;transform:scale(1.03)}}@media(prefers-reduced-motion:reduce){#storyPlay.school-start{animation:none}}</style></head><body>
+
+<section class="preview-reel" id="visiones" aria-label="Prólogo cinematográfico para exposición escolar">
+ <div class="preview-top"><b>✦ El Taller del Tiempo · Edición escolar cinematográfica</b><span class="preview-label">Prólogo cinematográfico + historia doblada</span></div>
+ <div class="preview-screen" id="previewScreen">
+  <video id="previewVideo" muted playsinline preload="metadata" poster="media/poster_uno.jpg" aria-label="Escena cinematográfica del País de las Maravillas"></video>
+  <div class="preview-chapter"><span></span><span id="previewChapter">EL PRIMER UMBRAL · 01 / 02</span></div>
+  <div class="preview-heading"><strong>Un viaje al otro lado del tiempo</strong><h2 id="previewTitle">Detrás de lo <em>imposible.</em></h2><p id="previewCaption">Primero viajá a las Maravillas. Después sentate a la mesa del té para escuchar a nuestros cinco personajes.</p></div>
+ </div>
+ <div class="preview-controls">
+  <div class="preview-actions">
+   <button class="preview-btn" type="button" id="previewMode" aria-pressed="false">🎬 Versión: prólogo breve</button>
+   <button class="preview-btn" type="button" id="previewSound" aria-pressed="false">♫ Sonido de los videos: no</button>
+   <button class="preview-btn" type="button" id="previewPlay">▶ Iniciar presentación</button>
+   <button class="preview-btn" type="button" id="previewNext">Siguiente escena →</button>
+   <button class="preview-btn preview-primary" type="button" id="previewEnter">✧ Ir a la mesa del té</button>
+  </div>
+  <div class="preview-status" role="status"><span id="previewState">Prólogo preparado · requiere archivos media/</span><div class="preview-track" aria-hidden="true"><span id="previewProgress"></span></div></div>
+ </div>
+ <p class="preview-note"><strong>Edición escolar:</strong> la escena del té y los cinco relojes ya están disponibles. Los videos de la película se activarán al incorporar los archivos a la carpeta <code>media/</code>. Mientras tanto, podés usar «Ir a la mesa del té». Antes de publicar los fragmentos en un repositorio público, verificá los derechos de distribución.</p>
+</section>
 
 <header class="site-header" id="inicio"><a class="brand" href="#historia"><span class="brandmark" aria-hidden="true">✦</span><span><strong>El Taller del Tiempo</strong><small>UNA PELÍCULA PARA JUGAR</small></span></a><nav class="navigation" aria-label="Navegación"><a href="#historia">La historia</a><a href="#taller" onclick="return !document.getElementById('taller').hidden">Los encargos</a><a href="#cuaderno" onclick="return !document.getElementById('taller').hidden">El cuaderno</a></nav><div class="topactions"><span class="topstars" id="stars" aria-label="Estrellas obtenidas">0 estrellas</span><button class="ghost" id="sound" type="button" aria-pressed="false">♫ Efectos: no</button></div></header>
 
@@ -474,6 +503,44 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
  if(hero&&window.matchMedia('(pointer:fine) and (prefers-reduced-motion:no-preference)').matches){hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();hero.style.setProperty('--px',((e.clientX-r.left)/r.width-.5).toFixed(2));hero.style.setProperty('--py',((e.clientY-r.top)/r.height-.5).toFixed(2));});hero.addEventListener('pointerleave',()=>{hero.style.setProperty('--px','0');hero.style.setProperty('--py','0');});}
  })();
  </script>
-
+<script>
+(()=>{
+ 'use strict';
+ const $ = id=>document.getElementById(id);
+ const clips = [
+  {brief:'media/referencia_uno.mp4',full:'media/pelicula_uno_completa.mp4',poster:'media/poster_uno.jpg',scene:'CAPÍTULO I / II · LA LLAMADA DE LO IMPOSIBLE',title:'Atravesá lo',em:'imposible.',caption:'La aventura comienza con los personajes y los paisajes que inspiraron nuestra mesa del té.'},
+  {brief:'media/referencia_dos.mp4',full:'media/pelicula_dos_completa.mp4',poster:'media/poster_dos.jpg',scene:'CAPÍTULO II / II · EL PAÍS DE LAS MARAVILLAS',title:'La magia está',em:'viva.',caption:'Conocé el mundo en el que nuestros personajes necesitan que repares sus relojes.'}
+ ];
+ let index=0,playing=false,showFull=false,withSound=false,sequenceToken=0;
+ const el=$('previewVideo'),play=$('previewPlay'),next=$('previewNext'),state=$('previewState'),progress=$('previewProgress'),screen=$('visiones'),mode=$('previewMode'),sound=$('previewSound');
+ function render(){
+   const clip=clips[index];sequenceToken++;el.pause();playing=false;el.poster=clip.poster;el.src=showFull?clip.full:clip.brief;el.muted=!withSound;el.volume=.65;el.load();
+   $('previewChapter').textContent=clip.scene;
+   $('previewTitle').innerHTML=clip.title+' <em>'+clip.em+'</em>';$('previewCaption').textContent=clip.caption;
+   play.textContent='▶ Reproducir escena';next.textContent=index===0?'Siguiente escena →':'↺ Volver a la primera';
+   mode.textContent=showFull?'🎬 Versión: videos completos':'🎬 Versión: prólogo breve';mode.setAttribute('aria-pressed',String(showFull));
+   sound.textContent=withSound?'♫ Sonido de los videos: sí':'♫ Sonido de los videos: no';sound.setAttribute('aria-pressed',String(withSound));
+   progress.style.width='0%';state.textContent=`Escena ${index+1} de 2 · lista`;screen.classList.remove('finished','school-finale');
+ }
+ async function playClip(){
+   if(playing){el.pause();playing=false;play.textContent='▶ Continuar escena';state.textContent='Escena en pausa';return;}
+   try {await el.play();playing=true;play.textContent='Ⅱ Pausar escena';state.textContent=`Reproduciendo escena ${index+1} de 2`;}
+   catch {playing=false;play.textContent='▶ Reproducir escena';state.textContent='Tocá «Reproducir» para comenzar la escena';}
+ }
+ function switchClip(n,auto=false){index=n;render();if(auto)playClip();}
+ function forward(){switchClip(index===0?1:0,false);}
+ function enter(){el.pause();playing=false;const film=$('historia');if(film){film.scrollIntoView({behavior:'smooth',block:'start'});const btn=$('storyPlay');if(btn){btn.focus({preventScroll:true});btn.classList.add('school-start');setTimeout(()=>btn.classList.remove('school-start'),7000);}}}
+ play.addEventListener('click',playClip);
+ next.addEventListener('click',forward);
+ $('previewEnter').addEventListener('click',enter);
+ mode.addEventListener('click',()=>{showFull=!showFull;switchClip(index,false);});
+ sound.addEventListener('click',()=>{withSound=!withSound;el.muted=!withSound;el.volume=.65;sound.textContent=withSound?'♫ Sonido de los videos: sí':'♫ Sonido de los videos: no';sound.setAttribute('aria-pressed',String(withSound));});
+ el.addEventListener('timeupdate',()=>{const d=el.duration||0;progress.style.width=(d?Math.min(100,Math.max(0,100*el.currentTime/d)):0)+'%';});
+ el.addEventListener('ended',()=>{playing=false;play.textContent='↺ Repetir escena';state.textContent='Escena terminada';screen.classList.add('finished');if(index===0){switchClip(1,true);}else{screen.classList.add('school-finale');state.textContent='¡Prólogo completo! Entrá a la mesa del té.';enter();}});
+ el.addEventListener('error',()=>{playing=false;state.textContent='Video no disponible: cargá los archivos en media/ o entrá a la mesa del té.';});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing){el.pause();playing=false;play.textContent='▶ Continuar escena';}});
+ render();
+})();
+</script>
 
 </body></html>
