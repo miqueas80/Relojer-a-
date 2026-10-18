@@ -64,3 +64,14 @@ Las ilustraciones siguen siendo 2.5D y la animación de boca detecta energía, n
 
 ## Modo de exhibición
 El botón «⛶ Proyección» abre la escena a pantalla completa en navegadores compatibles. Los subtítulos continúan visibles y podés usar flechas del teclado para retroceder o avanzar.
+
+## Rediseño visual inmersivo V4 · 18/10/2026
+- Portada panorámica original con acceso directo a la historia o a los videos de referencia.
+- Teatro de conversaciones a pantalla ancha con personajes escalonados en perspectiva, encuadres por interlocutor y un primer plano ilustrado para cada voz.
+- Subtítulos dentro del encuadre, controles accesibles y modo de movimientos reducidos.
+- Banco de relojería ambientado con luz dramática y superficie de taller, conservando todas las mecánicas anteriores.
+- La ilustración de ambientación se incluye directamente en el HTML: no requiere subir nuevos archivos para verse en GitHub Pages.
+- Las pistas multimedia existentes se mantienen en `audio/` y `media/`.
+- Rama de restauración: `backup/pre-visual-overhaul-v4-2026-10-18`.
+
+**Alcance artístico:** la portada es una ilustración conceptual y los actores siguen siendo muñecos SVG animados. Los primeros planos y la animación de boca mejoran la dirección de escena, pero no equivalen a animación cinematográfica fotorrealista o sincronización exacta de fonemas.
