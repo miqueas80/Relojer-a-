@@ -91,3 +91,12 @@ El botón «⛶ Proyección» abre la escena a pantalla completa en navegadores 
 **Pruebas automatizadas locales:** 5/5 reparaciones, escritorio y móvil sin desplazamiento horizontal, audio secuencial sin superposición, paso al taller con y sin movimiento reducido, sin errores de JavaScript.
 
 **Límite visual reconocido:** todavía se usan personajes ilustrados SVG; no es una animación tridimensional ni un doblaje con sincronización labial fonética profesional.
+
+
+## Corrección de usabilidad V6 — 18/10/2026
+- **Controles fuera del plano:** dentro de la película solo aparecen los personajes y los subtítulos; la reproducción y navegación quedan en una barra dedicada debajo de la escena.
+- **Ajustes e instrucciones accesibles:** desplegables independientes «¿Cómo se juega?» y «Ajustes de reproducción», compatibles con toque en móvil y modo proyección.
+- **Acciones principales claras:** reproducir/pausar, anterior y siguiente; aceptar los encargos aparece con botón destacado al final.
+- **Atajo del taller:** «Ir a mi siguiente acción» desplaza y enfoca los controles correctos, sin modificar las mecánicas.
+- **Pruebas verificadas:** cinco reparaciones completas, navegación y ajustes con clic/tacto en escritorio y móvil, sin errores de JavaScript ni desplazamiento horizontal en esos recorridos.
+- Se mantienen los nueve MP3, los seis recursos multimedia y la escena cinematográfica anterior. Los audios de la Oruga y el coro siguen pendientes.
