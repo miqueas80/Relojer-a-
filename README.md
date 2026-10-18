@@ -1,26 +1,33 @@
-# El Taller del Tiempo — Relojería de las Maravillas
+# El Taller del Tiempo — Edición escolar cinematográfica
 
-Una aventura interactiva de relojería inspirada en el mundo literario de *Alicia en el país de las maravillas*.
+Proyecto educativo interactivo basado en el universo literario de Alicia en el País de las Maravillas.
 
-## Contenido
+## Contenido de la rama main
+- `index.html`: escena cinematográfica de la mesa del té, nueve intervenciones con voces propias ya enlazadas, cinco reparaciones educativas y reproductor para los dos videos de referencia.
+- `audio/`: nueve MP3 que ya están subidos y enlazados en el código.
+- `media/`: **pendiente de cargar seis archivos multimedia**, listados abajo. Los controles de video mostrarán un aviso hasta completar la carga. Se puede entrar directamente a la historia y jugar.
 
-- Escena de la mesa del té con personajes originales ilustrados, subtítulos y turnos de diálogo.
-- Nueve pistas de doblaje aportadas al proyecto, sincronizadas por fin real del audio.
-- Cinco reparaciones didácticas e interactivas, adaptadas a celular.
-- Una sola página web con JavaScript y CSS integrados; funciona como sitio estático.
+## Para terminar de subir la edición escolar
 
-## Cómo probar
+Descargá el paquete **el_taller_del_tiempo_presentacion_escolar_cine.zip** disponible en el chat y extraélo. En GitHub, entrá a la carpeta `media/` de la rama `main`, elegí **Add file → Upload files** y seleccioná estos seis archivos desde la carpeta `taller_del_tiempo_edicion_escolar/media/`:
 
-Abrí `index.html` en un navegador. Para alojarlo en GitHub Pages, publicá este contenido en la raíz de la rama `main` y seleccioná en **Settings → Pages** la fuente **Deploy from a branch**, rama `main`, carpeta `/(root)`.
+- `referencia_uno.mp4` — prólogo breve 1
+- `referencia_dos.mp4` — prólogo breve 2
+- `pelicula_uno_completa.mp4` — montaje completo 1
+- `pelicula_dos_completa.mp4` — montaje completo 2
+- `poster_uno.jpg` — imagen de portada 1
+- `poster_dos.jpg` — imagen de portada 2
+
+**No vuelvas a subir los nueve MP3**: ya están correctamente guardados en `audio/`.
+
+Si GitHub no permite cargar todos juntos, elegí archivos de a uno. Confirmá el commit en `main`. Los nombres y las mayúsculas deben coincidir.
 
 ## Audios pendientes
 
-- `audio/Oruga.mp3` — «Y el mío se adelanta… La prisa no es una virtud, especialmente para un péndulo.»
-- `audio/Oruga2.mp3` — «No necesitás saberlo todo. La curiosidad es un excelente comienzo.»
-- `audio/Todos.mp3` — «¿Aceptás nuestros encargos?» (opcional, coro final)
+Faltan `audio/Oruga.mp3`, `audio/Oruga2.mp3` y opcionalmente `audio/Todos.mp3`. Las líneas sin audio quedan subtituladas.
 
-Cuando estén disponibles, asigná esos nombres a las entradas `null` del arreglo `AUDIO_CLIPS` en `index.html`. Hasta entonces, hay subtítulos sin voces sintetizadas.
+## GitHub Pages
+En **Settings → Pages → Build and deployment** seleccioná **Deploy from a branch**, rama `main`, carpeta `/(root)`. La URL esperada será `https://miqueas80.github.io/Relojer-a-/` una vez activado y completado el despliegue. No se ha verificado que esté publicado.
 
-## Alcance y derechos
-
-Esta edición para publicación **no contiene los fragmentos de películas ajenas** utilizados en pruebas de referencia. Los archivos de voz son los aportados para este proyecto; asegurate de contar con los permisos para publicarlos. Las reparaciones son simplificaciones didácticas y no reemplazan instrucción técnica profesional.
+## Aviso sobre medios de películas
+Los videos provienen de películas ajenas. El uso en una actividad escolar y la redistribución pública en GitHub son situaciones distintas; poné el repositorio privado antes de subir los videos si no tenés autorización de distribución pública. Cambiar a privado después de publicarlos no deshace copias o accesos anteriores.
