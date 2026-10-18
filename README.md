@@ -31,3 +31,14 @@ En **Settings → Pages → Build and deployment** seleccioná **Deploy from a b
 
 ## Aviso sobre medios de películas
 Los videos provienen de películas ajenas. El uso en una actividad escolar y la redistribución pública en GitHub son situaciones distintas; poné el repositorio privado antes de subir los videos si no tenés autorización de distribución pública. Cambiar a privado después de publicarlos no deshace copias o accesos anteriores.
+
+
+## Mejora cinematográfica de producción — 18/10/2026
+- Cámara de escenario 2,5D que encuadra a cada personaje durante sus intervenciones.
+- Escenografía más profunda, iluminación, objetos animados, gestos de boca ilustrativos y parpadeos.
+- Controles de historia: anterior/siguiente, modo de movimiento reducido, doblaje y saltar a la pregunta final.
+- Instrucciones situacionales en la mesa de trabajo y botón para ampliar el reloj.
+- Las nueve voces y seis recursos de video/imagen que ya estaban cargados se mantienen en sus rutas.
+- Regresión superada: cinco relojes reparables, pruebas de interfaz escritorio/móvil sin errores JavaScript observados.
+
+**Pendiente de producción de alta fidelidad:** modelado/rig artístico avanzado, sincronización labial real por audio y mezcla cinematográfica. No confundir la animación de boca actual con lipsync real.
