@@ -75,3 +75,19 @@ El botón «⛶ Proyección» abre la escena a pantalla completa en navegadores 
 - Rama de restauración: `backup/pre-visual-overhaul-v4-2026-10-18`.
 
 **Alcance artístico:** la portada es una ilustración conceptual y los actores siguen siendo muñecos SVG animados. Los primeros planos y la animación de boca mejoran la dirección de escena, pero no equivalen a animación cinematográfica fotorrealista o sincronización exacta de fonemas.
+
+
+## Director's Cut V5 — 18/10/2026
+
+**Nueva escena interactiva, conservando las cinco reparaciones.**
+
+- Ilustración panorámica del bosque incorporada **dentro de index.html** para evitar que falte en GitHub Pages.
+- Atrezo reactivo según personaje: reloj de bolsillo, taza con vapor, partículas de la Oruga, sonrisa del Gato y corazón real de la Reina.
+- Planos de cámara y reacciones visuales del elenco según las 12 intervenciones originales; subtítulos cinematográficos dentro del encuadre.
+- Transición de reloj hacia el primer encargo después de pulsar «Sí, acepto»; la opción de movimiento reducido se respeta.
+- Banco de reparación ampliado a una columna principal en escritorio y controles accesibles en móvil.
+- Los MP3 y MP4 existentes se conservan. **No se inventó ningún audio nuevo**. Oruga y coro siguen pendientes.
+
+**Pruebas automatizadas locales:** 5/5 reparaciones, escritorio y móvil sin desplazamiento horizontal, audio secuencial sin superposición, paso al taller con y sin movimiento reducido, sin errores de JavaScript.
+
+**Límite visual reconocido:** todavía se usan personajes ilustrados SVG; no es una animación tridimensional ni un doblaje con sincronización labial fonética profesional.
