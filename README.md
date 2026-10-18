@@ -1,21 +1,26 @@
 # El Taller del Tiempo — Relojería de las Maravillas
 
-Juego educativo de relojería, inspirado en el mundo literario de Alicia en el país de las maravillas.
+Una aventura interactiva de relojería inspirada en el mundo literario de *Alicia en el país de las maravillas*.
 
-## Estado del proyecto
-- La página `index.html` contiene la escena cinematográfica de la mesa del té y cinco reparaciones interactivas.
-- Las voces originales de Narrador, Conejo, Sombrerero, Gato y Reina están **preparadas** para integrarse, pero los MP3 todavía no están cargados en este repositorio.
-- Los audios de la Oruga (`Oruga.mp3`, `Oruga2.mp3`) y el coro final (`Todos.mp3`) están pendientes.
-- Mientras falten audios, los diálogos continúan como subtítulos, sin voz sintética.
+## Contenido
 
-## Incorporar las voces
-Subí los MP3 a la carpeta `audio/` con estos nombres exactos:
-`Narrador.mp3`, `Conejo.mp3`, `Conejo2.mp3`, `Sombrerero.mp3`, `Sombrerero2.mp3`, `Gato.mp3`, `Gato2.mp3`, `Reina.mp3`, `Reina2.mp3`.
+- Escena de la mesa del té con personajes originales ilustrados, subtítulos y turnos de diálogo.
+- Nueve pistas de doblaje aportadas al proyecto, sincronizadas por fin real del audio.
+- Cinco reparaciones didácticas e interactivas, adaptadas a celular.
+- Una sola página web con JavaScript y CSS integrados; funciona como sitio estático.
 
-Después se pueden incorporar `Oruga.mp3`, `Oruga2.mp3` y `Todos.mp3`, actualizando las tres entradas `null` del arreglo `AUDIO_CLIPS` en `index.html`.
+## Cómo probar
 
-## Probar y publicar
-Abrí `index.html` localmente. Para publicar en GitHub Pages, en este repositorio elegí **Settings → Pages → Deploy from a branch → main → /(root)**.
+Abrí `index.html` en un navegador. Para alojarlo en GitHub Pages, publicá este contenido en la raíz de la rama `main` y seleccioná en **Settings → Pages** la fuente **Deploy from a branch**, rama `main`, carpeta `/(root)`.
 
-## Derechos
-La edición pública no contiene los clips de películas comerciales usados como referencia privada. Antes de publicar audios, verificá que contás con autorización para distribuirlos. Las reparaciones están simplificadas con fines didácticos.
+## Audios pendientes
+
+- `audio/Oruga.mp3` — «Y el mío se adelanta… La prisa no es una virtud, especialmente para un péndulo.»
+- `audio/Oruga2.mp3` — «No necesitás saberlo todo. La curiosidad es un excelente comienzo.»
+- `audio/Todos.mp3` — «¿Aceptás nuestros encargos?» (opcional, coro final)
+
+Cuando estén disponibles, asigná esos nombres a las entradas `null` del arreglo `AUDIO_CLIPS` en `index.html`. Hasta entonces, hay subtítulos sin voces sintetizadas.
+
+## Alcance y derechos
+
+Esta edición para publicación **no contiene los fragmentos de películas ajenas** utilizados en pruebas de referencia. Los archivos de voz son los aportados para este proyecto; asegurate de contar con los permisos para publicarlos. Las reparaciones son simplificaciones didácticas y no reemplazan instrucción técnica profesional.
