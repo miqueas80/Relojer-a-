@@ -107,7 +107,8 @@
 .cinema-chapter-stamp span{color:#e9b978}.cinema-shot-indicator{position:absolute;right:18px;bottom:26px;z-index:18;pointer-events:none;padding:7px 11px;border-radius:4px;background:#120f1da8;color:#f5d9b0;letter-spacing:.15em;font-size:9px;font-weight:800;border:1px solid #f5d9b033}
 .cinema .scene-bubble{width:min(46%,430px);background:linear-gradient(160deg,#fff8eaf9,#f9e5d7ef);box-shadow:0 10px 45px #090b22cf,0 0 48px #f2c9972a}
 .cinema.finale .cinema-shot-indicator{color:#ffdf9c}
-.character-frame .actor-face{display:none}/* Solo la escena cinematográfica anima expresiones; la llegada conserva el dibujo original. */
+.character-frame .actor-face{display:none}/* Solo la escena cinematográfica anima expresiones: la escena de llegada conserva el dibujo original. */
+.character-frame .actor-face{display:none}/* El retrato lateral mantiene las proporciones originales. */
 .movie-character .actor-mouth{transform-box:fill-box;transform-origin:center;opacity:0;transition:opacity .16s ease}
 .movie-character .actor-teeth{opacity:0}
 .movie-character .actor-eyelid{transform-box:fill-box;transform-origin:center;transform:scaleY(0);animation:actorBlink 7.6s infinite;animation-delay:var(--float-delay)}
@@ -141,6 +142,61 @@
 @media(max-width:520px){.stage-clock{top:24%;left:8%;width:35px;border-width:4px}.cinema-chapter-stamp{max-width:72%}.cinema-shot-indicator{font-size:7px;bottom:16px}.workbench-instruction{padding:12px;font-size:11px}.art.magnified{height:320px}.art.magnified svg{transform:scale(1.1)}}
 @media(prefers-reduced-motion:reduce){.camera-rig{transition:none!important}.actor-mouth,.actor-eyelid,.focus-pulse{animation:none!important}.stage-clock,.prop-flower{animation:none!important}}
 .cinema.motion-reduced .camera-rig{transition:none;transform:none}.cinema.motion-reduced .movie-character.active svg,.cinema.motion-reduced .actor-mouth,.cinema.motion-reduced .actor-eyelid{animation:none!important}
+
+
+
+/* Proyección de aula: escenario y subtítulos legibles en pantalla grande. */
+#historia:fullscreen{width:100vw;height:100dvh;min-height:0;background:#0b1020;overflow-y:auto;padding:8px clamp(6px,2vw,27px);justify-content:flex-start}
+#historia:fullscreen .movie-topline{font-size:9px;margin:1px 0 4px}
+#historia:fullscreen .movie-title{font-size:clamp(25px,3.1vw,43px);margin-bottom:4px}
+#historia:fullscreen .movie-description{display:none}
+#historia:fullscreen .cinema{width:min(100%,min(170vh,1650px));height:min(64dvh,760px);min-height:310px;flex-shrink:0;margin-inline:auto}
+#historia:fullscreen .story-console{max-width:1650px;width:100%;padding:10px 17px;margin-top:7px;gap:6px}
+#historia:fullscreen .story-console .console-info p{font-size:clamp(17px,2vw,26px);min-height:0}
+#historia:fullscreen .film-instruction{display:none}
+#historia:fullscreen .cinema-sounddesk{padding:6px 12px;margin-top:3px}
+#historia:fullscreen .voice-row{padding:4px 0}
+#historia:fullscreen .story-progress{margin-top:0}
+#historia:fullscreen .scene-bubble{font-size:clamp(16px,1.8vw,23px)}
+#historia:fullscreen .console-controls{justify-content:center}
+@media(max-width:750px){#historia:fullscreen{padding:6px}#historia:fullscreen .cinema{height:49dvh;min-height:220px}#historia:fullscreen .story-console{padding:9px}#historia:fullscreen .console-controls{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}#historia:fullscreen .console-controls .movie-btn{min-height:38px;font-size:10px;padding:7px}#historia:fullscreen .voice-row{display:none}}
+
+/* PRODUCCIÓN V3 — audio real como motor de actuación, luz y continuidad */
+.cinema{--emotion-light:#e8bb83;--scene-contrast:1;isolation:isolate}
+.cinema[data-speaker=rabbit]{--emotion-light:#ffb778;--scene-contrast:1.07}
+.cinema[data-speaker=hatter]{--emotion-light:#c5d89e;--scene-contrast:1.05}
+.cinema[data-speaker=caterpillar]{--emotion-light:#a0dcd7;--scene-contrast:.94}
+.cinema[data-speaker=cat]{--emotion-light:#d3b0f2;--scene-contrast:1.02}
+.cinema[data-speaker=queen]{--emotion-light:#ff859d;--scene-contrast:1.13}
+.cinema.finale{--emotion-light:#ffe4a9;--scene-contrast:1.12}
+.cinema:before{content:"";position:absolute;z-index:14;inset:0;pointer-events:none;opacity:.43;background:radial-gradient(ellipse 52% 68% at var(--spot-x) 56%,var(--emotion-light) -26%,transparent 90%);mix-blend-mode:screen;transition:background 1.4s ease,opacity 1.4s ease;filter:blur(30px)}
+.film-light-leak{position:absolute;inset:-12%;pointer-events:none;z-index:15;opacity:.32;background:radial-gradient(ellipse 22% 70% at -4% 12%,#e7b77865,transparent),radial-gradient(ellipse 31% 49% at 103% 81%,#8c5ba96b,transparent);animation:filmGlow 13s ease-in-out infinite alternate;mix-blend-mode:screen}
+.film-vignette{position:absolute;inset:0;z-index:16;pointer-events:none;background:radial-gradient(ellipse 69% 70% at 50% 48%,transparent 53%,#090c20a8 100%);box-shadow:inset 0 0 80px #0c0c1f44}
+.cinema.finale .film-light-leak{opacity:.62;animation-duration:6s}
+.movie-character.active{--voice-open:.04;--voice-width:1;--voice-active:0;--actor-jitter:0px}
+/* La boca deja de oscilar sin sonido: usa una envolvente extraída del MP3. */
+.cinema.is-speaking.has-recorded-voice .movie-character.active .actor-mouth{opacity:var(--voice-active,0)!important;animation:none!important;transform:scaleY(var(--voice-open,.04)) scaleX(var(--voice-width,1));transition:transform .07s linear,opacity .08s linear}
+.cinema.is-speaking.has-recorded-voice .movie-character.active .actor-teeth{opacity:var(--voice-active,0)!important}
+.cinema.is-speaking.has-recorded-voice .movie-character.active svg{animation:performanceBreath 1.65s ease-in-out infinite alternate;filter:drop-shadow(0 0 12px var(--emotion-light))}
+.movie-character[data-emotion=urgent].active svg{transform:rotate(-2deg)}
+.movie-character[data-emotion=royal].active svg{filter:drop-shadow(0 6px 8px #f485ab73)}
+.movie-character[data-emotion=whisper].active{filter:brightness(.9) saturate(.98) drop-shadow(0 10px 23px #a7cfca91)}
+.cinema-sounddesk{display:flex;align-items:center;gap:17px;margin:12px 0 0;padding:13px 15px;border:1px solid #d3af8152;background:linear-gradient(110deg,#2a213a,#392842);border-radius:12px;color:#fff4df;box-shadow:inset 0 1px 0 #ffffff0d}
+.soundtrack-toggle{flex:0 0 auto;border:1px solid #ead19b88;background:#ead09b1c;color:#ffdeaa;font-weight:850;border-radius:999px;padding:11px 15px;min-height:42px;font-size:11px}
+.soundtrack-toggle:hover,.soundtrack-toggle[aria-pressed=true]{background:#e4c083;color:#292039}
+.sounddesk-timeline{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
+.sounddesk-label{min-width:126px;font-size:10px;color:#d1bad7;letter-spacing:.05em;white-space:nowrap}
+.sounddesk-bar{height:7px;flex:1;min-width:45px;border-radius:12px;background:#947c8d66;overflow:hidden;box-shadow:inset 0 0 0 1px #f9dfa017}
+.sounddesk-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#bb88a9,#f3d99e);box-shadow:0 0 12px #f7d6a6;transition:width .14s linear;border-radius:12px}
+.sounddesk-time{font-variant-numeric:tabular-nums;flex:0 0 auto;color:#d9c0d1;font-size:11px}
+#historia.passage-active{position:relative}
+#historia.passage-active:after{content:"";pointer-events:none;position:fixed;z-index:1000;inset:0;background:#0a0e23;animation:passageThrough 1.45s ease-in-out both}
+@keyframes filmGlow{0%{transform:translate(-1%,2%) rotate(-2deg)}100%{transform:translate(3%,-3%) rotate(1deg)}}
+@keyframes performanceBreath{0%{transform:perspective(600px) rotateY(var(--idle)) scale(1)}100%{transform:perspective(600px) rotateY(var(--idle)) scale(1.024)}}
+@keyframes passageThrough{0%{opacity:0;clip-path:circle(100% at 50% 48%)}42%{opacity:.98;clip-path:circle(64% at 50% 48%)}65%{opacity:.98;clip-path:circle(64% at 50% 48%)}100%{opacity:0;clip-path:circle(0% at 50% 48%)}}
+@media(max-width:700px){.cinema-sounddesk{flex-wrap:wrap;gap:10px}.sounddesk-timeline{order:2;flex-basis:100%}.soundtrack-toggle{flex:1}.sounddesk-time{margin-left:auto}.sounddesk-label{min-width:110px}}
+@media(prefers-reduced-motion:reduce){.film-light-leak{animation:none}.cinema.is-speaking.has-recorded-voice .movie-character.active svg{animation:none!important}#historia.passage-active:after{animation:none}}
+.cinema.motion-reduced .film-light-leak{animation:none}.cinema.motion-reduced .movie-character.active .actor-mouth{transition:none}
 
 </style><style>/* EDICION CINEMATICA — Dirección artística y sistema visual */
 :root{--midnight:#0c1020;--abyss:#17182e;--violet:#2c203f;--lightgold:#f8e0aa;--ivory:#fff9ed;--pink:#f0b2c2;--teal:#bce7d6;}
@@ -298,12 +354,18 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
   <div class="cinema-shot-indicator" aria-hidden="true" id="shotIndicator">PLANO GENERAL · LA MESA DEL TÉ</div>
   <div class="scene-bubble" id="sceneBubble" aria-hidden="true"><strong id="bubbleName">Narrador</strong><span id="bubbleText">Dicen que el tiempo se había detenido…</span></div>
   <div class="cinema-filmstrip"></div>
+  <div class="film-light-leak" aria-hidden="true"></div><div class="film-vignette" aria-hidden="true"></div>
  </div>
  <div class="story-console" aria-label="Control de la historia">
   <div class="console-copy"><div class="console-chapter" id="filmCount">01</div><div class="console-info"><small id="filmWho">PRÓLOGO · NARRADOR</small><p id="filmWords" aria-live="polite">Dicen que en el País de las Maravillas hubo una tarde en que todos los relojes olvidaron caminar…</p></div></div>
-  <div class="console-controls"><button class="movie-btn gold" id="storyPlay" type="button">▶ Reproducir escena</button><button class="movie-btn" id="storyBack" type="button" aria-label="Volver al diálogo anterior">← Anterior</button><button class="movie-btn" id="storyNext" type="button">Siguiente diálogo →</button><button class="movie-btn" id="storyVoice" type="button" aria-pressed="true">🔊 Doblaje: sí</button><button class="movie-btn" id="storySkip" type="button">Saltar a la pregunta ↗</button><button class="movie-btn primary-final" id="storyAccept" type="button" hidden>✧ Sí, acepto sus encargos →</button><button class="movie-btn" id="storyReplay" type="button">↺ Repetir</button><button class="movie-btn" id="storyMotion" type="button" aria-pressed="true" title="Reducir o activar movimientos cinematográficos">🎞 Movimiento: sí</button></div>
+  <div class="console-controls"><button class="movie-btn gold" id="storyPlay" type="button">▶ Reproducir escena</button><button class="movie-btn" id="storyBack" type="button" aria-label="Volver al diálogo anterior">← Anterior</button><button class="movie-btn" id="storyNext" type="button">Siguiente diálogo →</button><button class="movie-btn" id="storyVoice" type="button" aria-pressed="true">🔊 Doblaje: sí</button><button class="movie-btn" id="storySkip" type="button">Saltar a la pregunta ↗</button><button class="movie-btn primary-final" id="storyAccept" type="button" hidden>✧ Sí, acepto sus encargos →</button><button class="movie-btn" id="storyReplay" type="button">↺ Repetir</button><button class="movie-btn" id="storyMotion" type="button" aria-pressed="true" title="Reducir o activar movimientos cinematográficos">🎞 Movimiento: sí</button><button class="movie-btn" id="storyProjection" type="button" aria-label="Abrir proyección a pantalla completa">⛶ Proyección</button></div>
   <div class="film-instruction" id="filmInstruction" role="status"><span class="film-instruction-star" aria-hidden="true">✦</span><span><strong>Empezá por la escena.</strong> Presioná «Reproducir escena» para escuchar a los personajes. También podés pasar una frase a la vez. Al final aparecerá la invitación para entrar al taller.</span></div>
   <div class="voice-row" id="voiceControls"><div class="voice-picker"><span>🎙️ 9 grabaciones originales incorporadas</span></div><div class="voice-info"><span class="voice-indicator" id="voiceState" role="status">Doblaje cargado · listo para empezar</span><small>La Oruga (dos frases) y el coro final esperan grabación: mientras tanto se muestran subtítulos sin voz robótica.</small></div></div>
+  <div class="cinema-sounddesk" aria-label="Banda sonora y avance del diálogo">
+   <button class="soundtrack-toggle" type="button" id="storyScore" aria-pressed="false">♫ Activar banda sonora</button>
+   <div class="sounddesk-timeline"><span class="sounddesk-label" id="soundCue">🎙 Audio del personaje</span><div class="sounddesk-bar" id="soundTimeline" role="progressbar" aria-label="Progreso de la intervención hablada" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="soundTimelineFill"></span></div></div>
+   <span class="sounddesk-time" id="soundTime">00:00</span>
+  </div>
   <div class="story-progress" id="storyDots" aria-label="Avance del prólogo"></div>
  </div><p class="finale-prompt" id="finalePrompt">Cinco miradas. Una pregunta. La aventura empieza con tu respuesta.</p>
 </section>
@@ -463,15 +525,15 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
    'audio/Narrador.mp3',
    'audio/Conejo.mp3',
    'audio/Sombrerero.mp3',
-   null, // Oruga 1 - esperando audio/Oruga.mp3
+   'audio/Oruga.mp3', // Al cargarse se reproduce automáticamente; si falta quedan subtítulos
    'audio/Gato.mp3',
    'audio/Reina.mp3',
    'audio/Conejo2.mp3',
    'audio/Sombrerero2.mp3',
    'audio/Gato2.mp3',
-   null, // Oruga 2 - esperando audio/Oruga2.mp3
+   'audio/Oruga2.mp3', // Al cargarse se reproduce automáticamente
    'audio/Reina2.mp3',
-   null  // Coro final - esperando audio/Todos.mp3
+   'audio/Todos.mp3'  // Coro opcional
  ];
  const filmWho={narrator:'Narrador',rabbit:'Conejo Blanco',hatter:'Sombrerero Loco',caterpillar:'Oruga Azul',cat:'Gato de Cheshire',queen:'Reina de Corazones',all:'Todos los visitantes'};
  const focusByPerson={rabbit:'18%',hatter:'31%',caterpillar:'49%',cat:'69%',queen:'82%',all:'50%',narrator:'50%'};
@@ -491,7 +553,94 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
   el.innerHTML=`<span class="focus-pulse" aria-hidden="true"></span><span>${guide[phase]}</span>`;
  }
  function renderCoach(){let c=getCase();const levels={welcome:['Escuchá qué le ocurre a su reloj y aceptá inspeccionarlo.','01 / 04'],inspect:['El reloj te mostró una pista: elegí el diagnóstico que mejor la explica.','02 / 04'],repair:[c.id==='queen'?'Usá los botones o arrastrá las agujas. Buscá las 06:30.':`Seguí el procedimiento de ${c.name}. Usá los controles de la tarjeta y tocá las zonas brillantes si querés.`, '03 / 04'],solved:['¡Excelente! Ya sabés algo nuevo. Tocá «Siguiente visitante» para continuar.','04 / 04']};const [message,stage]=levels[phase];const el=$('coach');if(el)el.innerHTML=`<div class="coach-star" aria-hidden="true">✦</div><div><strong>Tu siguiente paso está acá</strong><p>${message}</p></div><button class="coach-jump" type="button" data-click="guide-next">Ver acción ↓</button><span class="coach-number">${stage}</span>`;}
+
+ // Studio score: procedurally generated ambience, silent until explicitly activated.
+ const VOICE_PERFORMANCE={
+  "audio/Conejo.mp3":"000199008972022310000003861057990487612504999910244100000002558949539920020230996102269500399600000049500582000009710306792658932697300000",
+  "audio/Conejo2.mp3":"00002076000431085230925129301100000000999925530299616300295273000000000182013099989903590079021008099730494597000000",
+  "audio/Gato.mp3":"0000599998998860291027899288330087571102210000000000000000000000000004959779689765995984283897770005988877799946992002998300376332992011000000",
+  "audio/Gato2.mp3":"000000000006990159989973570000000000000000000000000000000000000008996999995088733344566799899868965406862499973110000001000000000000000009930499358602200000000000000976684135513244000000000",
+  "audio/Narrador.mp3":"0004824960376661096962999404585721422143896990794121100201969827823499119246154996402100111000000000000000000000",
+  "audio/Reina.mp3":"0000668996601999897778740042100000000000000000998399499701399888842496955841079226300720003456510120000000000920009600194555206765005932003443320010000000",
+  "audio/Reina2.mp3":"00098709731194117022096529710000007953720597989414793395577390955042000000000000000000000",
+  "audio/Sombrerero.mp3":"00004789794253125300000000000000997108346312564000000009995994992991147308985670979949967677751158513210000000000001990089993187059304356410000000",
+  "audio/Sombrerero2.mp3":"0017402403902139751310000027016329920610530199947100000045049459880886986999997776688684223100000",
+ };
+ let performanceFrame=0;
+ const unavailableClips=new Set();
+ let scoreContext=null,scoreGain=null,scoreEnabled=false,scoreGenerators=[];
+ function stopPerformance(){
+   if(performanceFrame)cancelAnimationFrame(performanceFrame);
+   performanceFrame=0;
+   const shell=$('cinema');shell.classList.remove('has-recorded-voice');
+   for(const actor of shell.querySelectorAll('.movie-character')){
+     actor.style.setProperty('--voice-active','0');actor.style.setProperty('--voice-open','.04');actor.style.setProperty('--voice-width','1');
+   }
+   $('soundTimelineFill').style.width='0%';
+   $('soundTimeline').setAttribute('aria-valuenow','0');
+   $('soundTime').textContent='00:00';
+ }
+ function mmss(value){if(!Number.isFinite(value)||value<0)value=0;const n=Math.floor(value);return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');}
+ function setSoundProgress(a,voice,seconds,open){
+   const figure=$('movieCast').querySelector('.movie-character[data-person="'+voice+'"]');
+   if(figure){figure.style.setProperty('--voice-active',open>.16?'1':'0');figure.style.setProperty('--voice-open',String(Math.max(.04,.25+open*1.8)));figure.style.setProperty('--voice-width',String(1.25-open*.33));}
+   const duration=Number(a.duration)||((VOICE_PERFORMANCE[a.__source]||'').length*.05)||0;
+   const progress=duration?Math.min(100,seconds/duration*100):0;
+   $('soundTimelineFill').style.width=progress.toFixed(1)+'%';
+   $('soundTimeline').setAttribute('aria-valuenow',String(Math.round(progress)));
+   $('soundTime').textContent=mmss(seconds)+' / '+mmss(duration);
+ }
+ function animateRecordedVoice(a,file,session){
+   const data=VOICE_PERFORMANCE[file];if(!data)return;
+   $('cinema').classList.add('has-recorded-voice');
+   const voice=MOVIE_LINES[filmIndex].who;
+   function frame(){
+     if(session!==filmSession||currentAudio!==a||a.paused){return;}
+     const second=Math.max(0,Number(a.currentTime)||0);
+     const index=Math.min(data.length-1,Math.floor(second/.05));
+     const amplitude=Number(data[index]||0)/9;
+     setSoundProgress(a,voice,second,amplitude);
+     performanceFrame=requestAnimationFrame(frame);
+   }
+   performanceFrame=requestAnimationFrame(frame);
+ }
+ function setScoreDucking(speaking){
+   if(!scoreGain||!scoreContext||!scoreEnabled)return;
+   const t=scoreContext.currentTime;
+   scoreGain.gain.cancelScheduledValues(t);scoreGain.gain.setTargetAtTime(speaking?.010:.036,t,.35);
+ }
+ function updateScoreButton(){const btn=$('storyScore');btn.textContent=scoreEnabled?'♫ Banda sonora: sí':'♫ Activar banda sonora';btn.setAttribute('aria-pressed',String(scoreEnabled));}
+ function toggleScore(){
+   const API=window.AudioContext||window.webkitAudioContext;
+   if(!API){$('soundCue').textContent='Música no disponible en este navegador';return;}
+   if(!scoreContext){
+     scoreContext=new API();scoreGain=scoreContext.createGain();scoreGain.gain.value=0;
+     const filter=scoreContext.createBiquadFilter();filter.type='lowpass';filter.frequency.value=1000;filter.Q.value=.28;
+     scoreGain.connect(filter);filter.connect(scoreContext.destination);
+     // Tríadas flotantes muy tenues. Música sintetizada original, sin archivos externos.
+     [[174.61,.39],[261.63,.21],[349.23,.18],[440,.11],[698.46,.06]].forEach(([hz,weight],i)=>{
+       const osc=scoreContext.createOscillator();osc.type=i===0?'sine':'triangle';osc.frequency.value=hz;
+       const g=scoreContext.createGain();g.gain.value=weight;
+       osc.connect(g).connect(scoreGain);osc.start();scoreGenerators.push(osc);
+     });
+   }
+   scoreEnabled=!scoreEnabled;
+   if(scoreEnabled){scoreContext.resume().catch(()=>{scoreEnabled=false;updateScoreButton();});setScoreDucking(Boolean(currentAudio&&!currentAudio.paused));}
+   else {const t=scoreContext.currentTime;scoreGain.gain.cancelScheduledValues(t);scoreGain.gain.setTargetAtTime(0,t,.18);}
+   updateScoreButton();
+ }
+ function directorChime(){
+   if(!scoreEnabled||!scoreContext)return;
+   const t=scoreContext.currentTime;
+   [830.61,1244.5].forEach((freq,i)=>{
+     const tone=scoreContext.createOscillator();const g=scoreContext.createGain();
+     tone.type='sine';tone.frequency.value=freq;g.gain.setValueAtTime(.0001,t+i*.08);g.gain.exponentialRampToValueAtTime(.005,t+i*.08+.03);g.gain.exponentialRampToValueAtTime(.0001,t+i*.08+.85);
+     tone.connect(g).connect(scoreContext.destination);tone.start(t+i*.08);tone.stop(t+i*.08+.9);
+   });
+ }
+
  function stopPlayback(){
+   stopPerformance();setScoreDucking(false);
    filmSession++;
    clearTimeout(filmTimer);filmTimer=null;
    if(currentAudio){
@@ -506,8 +655,8 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
    $('storyVoice').setAttribute('aria-pressed',String(filmVoices));
    const state=$('voiceState'),line=MOVIE_LINES[filmIndex],path=AUDIO_CLIPS[filmIndex];
    if(!filmVoices)state.textContent='Subtítulos activos · doblaje desactivado';
-   else if(!path && line.who==='caterpillar')state.textContent='Oruga Azul: audio pendiente · subtítulos activos';
-   else if(!path && line.who==='all')state.textContent='Pregunta final: coro pendiente · subtítulos activos';
+   else if((!path||unavailableClips.has(path)) && line.who==='caterpillar')state.textContent='Oruga Azul: audio pendiente · subtítulos activos';
+   else if((!path||unavailableClips.has(path)) && line.who==='all')state.textContent='Pregunta final: coro pendiente · subtítulos activos';
    else if(currentAudio && !currentAudio.paused)state.textContent='Reproduciendo la grabación de '+filmWho[line.who]+'…';
    else state.textContent='Listo para reproducir · '+filmWho[line.who];
  }
@@ -524,18 +673,20 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
    stopPlayback();
    const session=filmSession;
    const line=MOVIE_LINES[filmIndex],file=AUDIO_CLIPS[filmIndex];
-   if(!filmVoices || !file){
+   if(!filmVoices || !file || unavailableClips.has(file)){
      // Solo mientras falta la Oruga y el coro, mostrar subtítulos suficientes.
      if(filmPlaying)filmTimer=setTimeout(()=>advanceAfterAudio(session),Math.max(3200,Math.min(9000,line.text.length*78)));
      updateFilmControls();return;
    }
-   const a=new Audio(file);currentAudio=a;a.preload='auto';a.volume=1;
+   const a=new Audio(file);a.__source=file;currentAudio=a;a.preload='auto';a.volume=1;
    let settled=false;
    const finished=(error=false)=>{
      if(settled||session!==filmSession)return;
      settled=true;currentAudio=null;
+     stopPerformance();setScoreDucking(false);
      if(error){
-       $('voiceState').textContent='No se pudo cargar '+file+' · continuamos con subtítulos';
+       unavailableClips.add(file);
+       $('voiceState').textContent='Audio no disponible · continuamos con subtítulos';
        if(filmPlaying)filmTimer=setTimeout(()=>advanceAfterAudio(session),Math.max(2500,line.text.length*65));
      } else advanceAfterAudio(session);
      updateFilmControls();
@@ -544,16 +695,17 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
    a.onerror=()=>finished(true);
    let promise;
    try{promise=a.play();}catch{finished(true);return;}
-   if(promise&&typeof promise.catch==='function')promise.catch(()=>finished(true));
+   if(promise&&typeof promise.then==='function')promise.then(()=>{if(session!==filmSession)return;animateRecordedVoice(a,file,session);setScoreDucking(true);},()=>finished(true));
    updateFilmControls();
  }
  function renderCinema(){const line=MOVIE_LINES[filmIndex],final=line.who==='all',who=line.who;const shell=$('cinema');applyShot(who);shell.dataset.speaker=who;shell.classList.toggle('finale',final);shell.classList.toggle('is-speaking',filmPlaying);shell.style.setProperty('--spot-x',focusByPerson[who]||'50%');
- const cast=$('movieCast');for(const figure of cast.querySelectorAll('.movie-character')){const active=!final && figure.dataset.person===who;const ownIndex=CASES.findIndex(c=>c.id===figure.dataset.person);const speakIndex=CASES.findIndex(c=>c.id===who);figure.style.setProperty('--idle',final?'0deg':who==='narrator'?(ownIndex<2?'24deg':'-24deg'):active?'0deg':(speakIndex>ownIndex?'25deg':'-25deg'));figure.classList.toggle('active',active);figure.classList.toggle('reacting',lastSpeaker===figure.dataset.person&&!active&&!final);}
+ const stageEmotion={rabbit:'urgent',hatter:'surprise',caterpillar:'whisper',cat:'playful',queen:'royal'};
+ const cast=$('movieCast');for(const figure of cast.querySelectorAll('.movie-character')){figure.dataset.emotion=stageEmotion[who]||'neutral';const active=!final && figure.dataset.person===who;const ownIndex=CASES.findIndex(c=>c.id===figure.dataset.person);const speakIndex=CASES.findIndex(c=>c.id===who);figure.style.setProperty('--idle',final?'0deg':who==='narrator'?(ownIndex<2?'24deg':'-24deg'):active?'0deg':(speakIndex>ownIndex?'25deg':'-25deg'));figure.classList.toggle('active',active);figure.classList.toggle('reacting',lastSpeaker===figure.dataset.person&&!active&&!final);}
  const bubble=$('sceneBubble');bubble.classList.remove('visible');bubble.style.setProperty('--bubble-x',focusByPerson[who]||'50%');$('bubbleName').textContent=filmWho[who];$('bubbleText').textContent=final?'¿Aceptás nuestros encargos?':(who==='narrator'?'✦ Y así comenzó la historia…':line.text);
  requestAnimationFrame(()=>bubble.classList.add('visible'));
  $('filmWho').textContent=(final?'UNA SOLA PREGUNTA · TODOS TE MIRAN':`${filmWho[who]} · ESCENA ${String(filmIndex+1).padStart(2,'0')}`);$('filmWords').textContent=line.text;$('filmCount').textContent=String(filmIndex+1).padStart(2,'0');$('storyDots').innerHTML=MOVIE_LINES.map((l,i)=>`<span class="story-dot ${i<filmIndex?'past':i===filmIndex?'current':''}" aria-hidden="true"></span>`).join('');$('storyBack').disabled=filmIndex===0;$('storyNext').hidden=final;$('storyPlay').hidden=final;$('storyAccept').hidden=!final;$('finalePrompt').classList.toggle('show',final);$('storyNext').textContent=filmIndex===MOVIE_LINES.length-2?'Ver la pregunta →':'Siguiente diálogo →';
  const instruction=$('filmInstruction');if(instruction)instruction.innerHTML=final?'<span class="film-instruction-star">✦</span><span><strong>Ahora decidís vos.</strong> Mirá la pregunta y presioná el botón dorado «Sí, acepto sus encargos» para entrar al taller.</span>':filmIndex===0?'<span class="film-instruction-star">✦</span><span><strong>Tu película comienza acá.</strong> Reproducí la escena para escuchar todas las voces, o avanzá una frase a la vez. Podés pausar cuando quieras.</span>':`<span class="film-instruction-star">✦</span><span><strong>Turno ${filmIndex+1} de ${MOVIE_LINES.length}.</strong> ${filmWho[who]} habla. Podés escuchar el clip completo o pasar al siguiente diálogo con el botón.</span>`;
- lastSpeaker=who;updateFilmControls();
+ lastSpeaker=who;$('soundCue').textContent=final?'La decisión está en tus manos':'🎙 Voz de '+filmWho[who];directorChime();updateFilmControls();
  }
  function stopCinema(){filmPlaying=false;stopPlayback();updateFilmControls();}
  function previousCinema(){
@@ -567,11 +719,20 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
    stopPlayback();
    if(filmIndex<MOVIE_LINES.length-1){filmIndex++;filmPlaying=keepAuto;renderCinema();if(keepAuto)playCurrentLine();}
  }
- function acceptCinema(){stopCinema();const world=$('taller');world.hidden=false;const first=CASES.findIndex(c=>!saved[c.id]);const selected=first===-1?0:first;switchCase(selected);setTimeout(()=>world.scrollIntoView({behavior:'smooth',block:'start'}),70);}
+ function acceptCinema(){stopCinema();if(filmMotion){$('historia').classList.add('passage-active');setTimeout(()=>$('historia').classList.remove('passage-active'),1500);}const world=$('taller');world.hidden=false;const first=CASES.findIndex(c=>!saved[c.id]);const selected=first===-1?0:first;switchCase(selected);setTimeout(()=>world.scrollIntoView({behavior:'smooth',block:'start'}),70);}
  function setupCinema(){const cast=$('movieCast');cast.innerHTML=CASES.map(c=>`<div class="movie-character" data-person="${c.id}" role="img" aria-label="${c.name} sentado en la mesa del té"><span class="speech-rune" aria-hidden="true">✦ ♫</span>${characterSvg(c.id)}<span class="guest-name">${c.short}</span></div>`).join('');const stars=$('movieStars');stars.innerHTML=Array.from({length:35},(_,i)=>`<i class="scene-star" style="--sx:${(i*97+23)%99}%;--sy:${(i*41+9)%95}%;--size:${(i%3)+2}px;--delay:${-(i*7%13)/3}s;--t:${(i%5)+3}s"></i>`).join('');renderCinema();
  $('storyNext').addEventListener('click',nextCinema);
  $('storyBack').addEventListener('click',previousCinema);
  $('storyMotion').addEventListener('click',()=>{filmMotion=!filmMotion;applyShot(MOVIE_LINES[filmIndex].who);});
+ $('storyScore').addEventListener('click',toggleScore);updateScoreButton();
+ $('storyProjection').addEventListener('click',async()=>{
+   const shell=$('historia');
+   try{if(document.fullscreenElement===shell)await document.exitFullscreen();
+     else if(shell.requestFullscreen)await shell.requestFullscreen();
+     else $('voiceState').textContent='Este navegador no permite pantalla completa.';
+   }catch{$('voiceState').textContent='No se pudo abrir pantalla completa; usá la vista normal.';}
+ });
+ document.addEventListener('fullscreenchange',()=>{const open=document.fullscreenElement===$('historia');$('storyProjection').textContent=open?'⤢ Salir de proyección':'⛶ Proyección';$('storyProjection').setAttribute('aria-label',open?'Salir de pantalla completa':'Abrir proyección a pantalla completa');});
  $('cinema').addEventListener('keydown',e=>{
    if(e.target!==e.currentTarget)return;
    if(e.key==='ArrowRight'){e.preventDefault();nextCinema();}
@@ -594,7 +755,7 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
    stopCinema();filmIndex=0;lastSpeaker=null;renderCinema();
  });
  // Al abandonar la pestaña se corta la reproducción, no se deja una voz sin control.
- document.addEventListener('visibilitychange',()=>{if(document.hidden&&filmPlaying)stopCinema();});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){if(filmPlaying)stopCinema();if(scoreContext&&scoreEnabled)scoreContext.suspend();}else if(scoreContext&&scoreEnabled)scoreContext.resume().catch(()=>{});});
  updateFilmControls();
 
  }
