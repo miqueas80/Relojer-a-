@@ -90,6 +90,57 @@
 @media(max-width:700px){.preview-actions{grid-template-columns:1fr 1fr!important}.preview-btn.preview-primary{grid-column:1/-1}.preview-status{width:100%}}
 
 
+
+/* DIRECCIÓN CINEMATOGRÁFICA — edición de producción */
+:root{--shot-gold:#f6d49c;--shot-plum:#171327}
+.cinema{--camera-focus:50%;--camera-zoom:1;--spot-x:50%;background:radial-gradient(ellipse 75% 75% at 50% 75%,#58445c,#171828 80%)}
+.camera-rig{position:absolute;inset:0;z-index:2;pointer-events:none;transform-origin:var(--camera-focus) 60%;transform:scale(var(--camera-zoom));transition:transform 2.6s cubic-bezier(.19,.65,.15,1);will-change:transform}
+.camera-rig>.stage-architecture{z-index:0}.camera-rig>.movie-cast{z-index:8}.camera-rig>.stage-table{z-index:11}
+.camera-rig>.stage-flowers,.camera-rig>.stage-float-card,.camera-rig>.mushroom,.camera-rig>.stage-stars,.camera-rig>.stage-curtain,.camera-rig>.stage-chandelier,.camera-rig>.stage-clock{position:absolute}
+.forest-atmosphere{position:absolute;inset:0;pointer-events:none;opacity:.88;mix-blend-mode:screen;overflow:hidden;filter:blur(.35px)}.forest-atmosphere svg{width:100%;height:100%;display:block}
+.stage-clock{left:12%;top:21%;width:68px;aspect-ratio:1;border-radius:50%;border:7px double #ecd4a1;background:radial-gradient(circle,#ffebc3 0%,#a4747d 78%,#402b47 100%);box-shadow:0 0 24px #f9deab42,inset 0 0 0 3px #e9c79d;z-index:3;animation:clockLevitate 8s ease-in-out infinite}
+.clock-tick{position:absolute;left:49%;top:14%;height:36%;width:3px;transform-origin:50% 100%;background:#473245;transform:rotate(25deg);border-radius:5px}
+.clock-hour{position:absolute;left:48%;top:28%;height:23%;width:5px;transform-origin:50% 100%;background:#513349;transform:rotate(-53deg);border-radius:5px}
+.clock-point{position:absolute;inset:45% 43%;border-radius:50%;background:#d9aa76;border:1px solid #3e2b48}
+.prop-flower{position:absolute;top:8%;color:#ffd99f;font-size:37px;text-shadow:0 3px 18px #a83b76;animation:flowerSway 6s ease-in-out infinite;z-index:3}.flower-l{left:32%}.flower-r{right:29%;animation-delay:-2.3s}
+.cinema-chapter-stamp{position:absolute;left:22px;top:19px;z-index:18;pointer-events:none;color:#ffebc9;font-size:9px;letter-spacing:.26em;font-weight:850;text-shadow:0 3px 14px #181026}
+.cinema-chapter-stamp span{color:#e9b978}.cinema-shot-indicator{position:absolute;right:18px;bottom:26px;z-index:18;pointer-events:none;padding:7px 11px;border-radius:4px;background:#120f1da8;color:#f5d9b0;letter-spacing:.15em;font-size:9px;font-weight:800;border:1px solid #f5d9b033}
+.cinema .scene-bubble{width:min(46%,430px);background:linear-gradient(160deg,#fff8eaf9,#f9e5d7ef);box-shadow:0 10px 45px #090b22cf,0 0 48px #f2c9972a}
+.cinema.finale .cinema-shot-indicator{color:#ffdf9c}
+.movie-character .actor-mouth{transform-box:fill-box;transform-origin:center;opacity:0;transition:opacity .16s ease}
+.movie-character .actor-teeth{opacity:0}
+.movie-character .actor-eyelid{transform-box:fill-box;transform-origin:center;transform:scaleY(0);animation:actorBlink 7.6s infinite;animation-delay:var(--float-delay)}
+.movie-character .actor-eyelid.right{animation-delay:calc(var(--float-delay) - .08s)}
+.cinema.is-speaking .movie-character.active .actor-mouth{opacity:1;animation:actorSpeak .28s ease-in-out infinite alternate}
+.cinema.is-speaking .movie-character.active .actor-teeth{opacity:.8}
+.movie-character.reacting .actor-eyelid{animation-duration:2.3s}
+.cinema.is-speaking .movie-character.active{filter:brightness(1.27) saturate(1.19) drop-shadow(0 10px 21px #efbd857c)}
+.film-instruction{display:flex;gap:13px;align-items:flex-start;margin:13px 0 0;padding:14px 17px;border:1px solid #cba86e7c;border-radius:13px;background:linear-gradient(100deg,#ffebc8,#f9e0c7);color:#4d3650;font-size:12px;line-height:1.6;box-shadow:0 8px 23px #190f2a12}
+.film-instruction strong{color:#463049}.film-instruction-star{font-size:28px;line-height:1;color:#93668a;flex:0 0 auto}
+#storyBack:disabled{opacity:.48;cursor:not-allowed}
+#storyAccept:not([hidden]){animation:invitePulse 2.5s ease-in-out infinite;box-shadow:0 0 0 0 #f9c9826e}
+.workbench{background:radial-gradient(ellipse 80% 50% at 50% 32%,#f9ead4,#e4c5a7 68%,#cba88c 100%);isolation:isolate}
+.workbench:after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,#5b3a2811 0 1px,transparent 2px 9px);opacity:.32;z-index:0}
+.workbench-halo{position:absolute;z-index:0;left:50%;top:45px;width:min(480px,90%);height:320px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at center,#fffbe3a8,transparent 72%);pointer-events:none}
+.workhead,.workbench-instruction,.tool-dock,.art,.art-caption,.lens-control{position:relative;z-index:2}
+.workbench-instruction{display:flex;align-items:flex-start;gap:11px;padding:14px 17px;margin:15px 0 8px;border:1px solid #bb8e6590;background:linear-gradient(100deg,#fff9e7,#ffedd9);color:#584052;border-radius:12px;box-shadow:0 7px 20px #9d6b5d24;font-size:12px;line-height:1.6;font-weight:750}
+.focus-pulse{width:11px;height:11px;flex:0 0 11px;margin-top:4px;border-radius:50%;background:#a57250;box-shadow:0 0 0 4px #e5bf8b66;animation:focusPulse 1.8s ease-out infinite}
+.art{transition:height .4s ease,filter .4s ease}.art.magnified{height:440px}.art.magnified svg{transform:scale(1.32);filter:drop-shadow(0 14px 15px #634d4d72);transform-origin:50% 50%;transition:transform .35s ease}.art.magnified:before{transform:translateX(-50%) scale(1.26)}
+.lens-control{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 0}.lens-button{border:1px solid #a4776e;background:#fff8e7;color:#603d57;font-size:12px;padding:10px 18px;border-radius:999px;font-weight:800;box-shadow:0 5px 10px #8b5b5b25}
+.lens-button[aria-pressed=true]{background:#523e58;color:#fff7e9}.lens-control small{color:#80697b;font:italic 11px Georgia,serif}
+.task .btn.primary,.task .btn.gold,.coach-jump{font-size:13px;min-height:49px}
+.task .btn.primary{background:linear-gradient(120deg,#5f375f,#342b4b);box-shadow:0 8px 22px #60395c30}
+@keyframes actorBlink{0%,40%,43%,61%,64%,100%{transform:scaleY(0)}41%,62%{transform:scaleY(1)}}
+@keyframes actorSpeak{0%{transform:scaleY(.6) scaleX(1.25)}50%{transform:scaleY(1.65) scaleX(.75)}100%{transform:scaleY(.95) scaleX(1.1)}}
+@keyframes clockLevitate{50%{transform:translateY(-16px) rotate(-5deg)}}
+@keyframes flowerSway{50%{transform:rotate(9deg) translateY(-5px)}}
+@keyframes invitePulse{50%{box-shadow:0 0 0 9px #f9c9821f}}
+@keyframes focusPulse{70%{box-shadow:0 0 0 11px #e5bf8b00}100%{box-shadow:0 0 0 0 #e5bf8b00}}
+@media(max-width:800px){.cinema-chapter-stamp{font-size:8px;letter-spacing:.13em;left:12px;top:12px}.cinema-shot-indicator{right:10px;bottom:18px;max-width:63%;font-size:8px}.stage-clock{width:48px}.film-instruction{font-size:11px}.art.magnified{height:370px}.art.magnified svg{transform:scale(1.16)}.lens-control small{display:none}}
+@media(max-width:520px){.stage-clock{top:24%;left:8%;width:35px;border-width:4px}.cinema-chapter-stamp{max-width:72%}.cinema-shot-indicator{font-size:7px;bottom:16px}.workbench-instruction{padding:12px;font-size:11px}.art.magnified{height:320px}.art.magnified svg{transform:scale(1.1)}}
+@media(prefers-reduced-motion:reduce){.camera-rig{transition:none!important}.actor-mouth,.actor-eyelid,.focus-pulse{animation:none!important}.stage-clock,.prop-flower{animation:none!important}}
+.cinema.motion-reduced .camera-rig{transition:none;transform:none}.cinema.motion-reduced .movie-character.active svg,.cinema.motion-reduced .actor-mouth,.cinema.motion-reduced .actor-eyelid{animation:none!important}
+
 </style><style>/* EDICION CINEMATICA — Dirección artística y sistema visual */
 :root{--midnight:#0c1020;--abyss:#17182e;--violet:#2c203f;--lightgold:#f8e0aa;--ivory:#fff9ed;--pink:#f0b2c2;--teal:#bce7d6;}
 html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
@@ -199,7 +250,7 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
 #storyPlay.school-start{animation:schoolGlow 1.4s ease-in-out infinite;outline:3px solid #f7d48e;outline-offset:4px}@keyframes schoolGlow{50%{box-shadow:0 0 24px #e6b15dcc;transform:scale(1.03)}}@media(prefers-reduced-motion:reduce){#storyPlay.school-start{animation:none}}</style></head><body>
 
 <section class="preview-reel" id="visiones" aria-label="Prólogo cinematográfico para exposición escolar">
- <div class="preview-top"><b>✦ El Taller del Tiempo · Edición escolar cinematográfica</b><span class="preview-label">Prólogo cinematográfico + historia doblada</span></div>
+ <div class="preview-top"><b>✦ El Taller del Tiempo · Edición escolar cinematográfica</b><span class="preview-label">Videos de la película + historia doblada</span></div>
  <div class="preview-screen" id="previewScreen">
   <video id="previewVideo" muted playsinline preload="metadata" poster="media/poster_uno.jpg" aria-label="Escena cinematográfica del País de las Maravillas"></video>
   <div class="preview-chapter"><span></span><span id="previewChapter">EL PRIMER UMBRAL · 01 / 02</span></div>
@@ -213,9 +264,9 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
    <button class="preview-btn" type="button" id="previewNext">Siguiente escena →</button>
    <button class="preview-btn preview-primary" type="button" id="previewEnter">✧ Ir a la mesa del té</button>
   </div>
-  <div class="preview-status" role="status"><span id="previewState">Prólogo preparado · requiere archivos media/</span><div class="preview-track" aria-hidden="true"><span id="previewProgress"></span></div></div>
+  <div class="preview-status" role="status"><span id="previewState">Prólogo listo · reproducción escolar</span><div class="preview-track" aria-hidden="true"><span id="previewProgress"></span></div></div>
  </div>
- <p class="preview-note"><strong>Edición escolar:</strong> la escena del té y los cinco relojes ya están disponibles. Los videos de la película se activarán al incorporar los archivos a la carpeta <code>media/</code>. Mientras tanto, podés usar «Ir a la mesa del té». Antes de publicar los fragmentos en un repositorio público, verificá los derechos de distribución.</p>
+ <p class="preview-note"><strong>Presentación escolar local:</strong> esta edición incluye fragmentos de películas aportados para exhibición educativa, junto con la obra interactiva original. El video es metraje ajeno: su uso en clase no equivale automáticamente a autorización para redistribuirlo en una web pública. El repositorio público permanece separado.</p>
 </section>
 
 <header class="site-header" id="inicio"><a class="brand" href="#historia"><span class="brandmark" aria-hidden="true">✦</span><span><strong>El Taller del Tiempo</strong><small>UNA PELÍCULA PARA JUGAR</small></span></a><nav class="navigation" aria-label="Navegación"><a href="#historia">La historia</a><a href="#taller" onclick="return !document.getElementById('taller').hidden">Los encargos</a><a href="#cuaderno" onclick="return !document.getElementById('taller').hidden">El cuaderno</a></nav><div class="topactions"><span class="topstars" id="stars" aria-label="Estrellas obtenidas">0 estrellas</span><button class="ghost" id="sound" type="button" aria-pressed="false">♫ Efectos: no</button></div></header>
@@ -224,23 +275,33 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
  <div class="movie-topline">EL TALLER DEL TIEMPO · UNA FÁBULA INTERACTIVA</div>
  <h1 class="movie-title" id="filmTitle">La hora de las <em>maravillas.</em></h1>
  <p class="movie-description">Cinco relojes dejaron de funcionar. En una mesa donde el tiempo no obedece a nadie, sus dueños tienen algo que contarte…</p>
- <div class="cinema" id="cinema" role="region" aria-label="Escena cinematográfica: la mesa del té">
-  <div class="stage-architecture" aria-hidden="true"><div class="stage-window"><div class="forest-silhouette"></div></div><div class="stage-light"></div></div>
+ <div class="cinema" id="cinema" role="region" aria-label="Escena cinematográfica: la mesa del té" tabindex="0">
+  <div class="camera-rig" id="cameraRig" aria-hidden="true">
+  <div class="stage-architecture" aria-hidden="true"><div class="stage-window"><div class="forest-silhouette"></div></div><div class="stage-light"></div><div class="forest-atmosphere" aria-hidden="true">
+<svg viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" focusable="false"><defs><linearGradient id="treeMist" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#eec996" stop-opacity=".5"/><stop offset="1" stop-color="#5d7185" stop-opacity="0"/></linearGradient></defs>
+<g opacity=".34"><path d="M0 390Q120 290 250 372T540 332T850 382T1200 308V520H0Z" fill="#527177"/><path d="M0 448Q162 351 333 433T672 397T1060 435L1200 385V520H0Z" fill="#263e51"/></g>
+<g opacity=".42" stroke="#26404a" fill="#26404a"><path d="M42 520Q92 323 61 122M64 282Q18 210 10 138M85 319Q122 234 156 194M1163 520Q1114 312 1152 151M1135 321Q1082 219 1043 175M1146 259Q1195 179 1214 142" stroke-width="29" fill="none" stroke-linecap="round"/><ellipse cx="59" cy="108" rx="115" ry="95"/><ellipse cx="1152" cy="114" rx="129" ry="101"/><ellipse cx="209" cy="97" rx="93" ry="76"/><ellipse cx="1030" cy="84" rx="98" ry="70"/></g>
+<path d="M460 0L365 515H770L653 0Z" fill="url(#treeMist)" opacity=".25"/></svg></div></div>
   <div class="stage-curtain left" aria-hidden="true"></div><div class="stage-curtain right" aria-hidden="true"></div>
   <div class="stage-chandelier" aria-hidden="true"><svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg"><path d="M109 0v105" stroke="#b99368" stroke-width="7"/><path d="M53 106q55 60 113 0M18 122q90 88 185 0" stroke="#cba274" fill="none" stroke-width="7"/><path d="M15 120v30m38-42v38m57-24v45m57-60v39m37-22v26" stroke="#f5d9a0" stroke-width="4"/><g fill="#ffedae" stroke="#ca9859" stroke-width="4"><ellipse cx="15" cy="148" rx="10" ry="19"/><ellipse cx="53" cy="145" rx="10" ry="20"/><ellipse cx="110" cy="167" rx="10" ry="20"/><ellipse cx="166" cy="145" rx="10" ry="20"/><ellipse cx="204" cy="148" rx="10" ry="19"/></g></svg></div>
+  <div class="stage-clock" aria-hidden="true"><span class="clock-tick"></span><span class="clock-hour"></span><span class="clock-point"></span></div>
   <div class="stage-float-card" aria-hidden="true">♥</div><div class="stage-float-card two" aria-hidden="true">♠</div>
   <div class="stage-stars" id="movieStars" aria-hidden="true"></div><div class="stage-flowers" aria-hidden="true"></div><div class="mushroom m1" aria-hidden="true"></div><div class="mushroom m2" aria-hidden="true"></div>
   <div class="movie-cast" id="movieCast" aria-label="Personajes en la mesa"></div>
   <div class="stage-table" aria-hidden="true"><div class="table-skirt"></div><div class="table-top"></div>
    <div class="prop prop-teapot"><svg viewBox="0 0 110 100" xmlns="http://www.w3.org/2000/svg"><path d="M22 39q-24-2-14 26q9 17 29 4" fill="none" stroke="#e7c9a6" stroke-width="9"/><path d="M84 41q27-2 12 22q-4 7-17 7" fill="none" stroke="#e7c9a6" stroke-width="8"/><path d="M18 37q40-15 70 0l-9 47q-28 19-52-1Z" fill="#eed6ba" stroke="#a17c7b" stroke-width="4"/><path d="M31 30q26-12 44 0" stroke="#ebc6a3" stroke-width="10" stroke-linecap="round"/><circle cx="53" cy="23" r="7" fill="#e5b47d"/><path d="M27 64q26-22 52 0" fill="none" stroke="#a16e90" stroke-width="5"/><path d="M25 74q27-21 56 0" stroke="#ac7f8e" fill="none" stroke-width="3"/></svg></div>
-   <div class="prop prop-cup c1"></div><div class="prop prop-cup c2"></div><div class="prop prop-cup c3"></div><div class="prop-card">♥</div>
+   <div class="prop prop-cup c1"></div><div class="prop prop-cup c2"></div><div class="prop prop-cup c3"></div><div class="prop-card">♥</div><div class="prop-flower flower-l" aria-hidden="true">✿</div><div class="prop-flower flower-r" aria-hidden="true">✿</div>
   </div>
+  </div><!-- Fin del escenario dentro de la cámara -->
+  <div class="cinema-chapter-stamp" aria-hidden="true"><span>✦</span> EL PAÍS DE LAS MARAVILLAS <span>✦</span></div>
+  <div class="cinema-shot-indicator" aria-hidden="true" id="shotIndicator">PLANO GENERAL · LA MESA DEL TÉ</div>
   <div class="scene-bubble" id="sceneBubble" aria-hidden="true"><strong id="bubbleName">Narrador</strong><span id="bubbleText">Dicen que el tiempo se había detenido…</span></div>
   <div class="cinema-filmstrip"></div>
  </div>
  <div class="story-console" aria-label="Control de la historia">
   <div class="console-copy"><div class="console-chapter" id="filmCount">01</div><div class="console-info"><small id="filmWho">PRÓLOGO · NARRADOR</small><p id="filmWords" aria-live="polite">Dicen que en el País de las Maravillas hubo una tarde en que todos los relojes olvidaron caminar…</p></div></div>
-  <div class="console-controls"><button class="movie-btn gold" id="storyPlay" type="button">▶ Reproducir escena</button><button class="movie-btn" id="storyNext" type="button">Siguiente diálogo →</button><button class="movie-btn" id="storyVoice" type="button" aria-pressed="true">🔊 Doblaje: sí</button><button class="movie-btn" id="storySkip" type="button">Saltar a la pregunta ↗</button><button class="movie-btn primary-final" id="storyAccept" type="button" hidden>✧ Sí, acepto sus encargos →</button><button class="movie-btn" id="storyReplay" type="button">↺ Repetir</button></div>
+  <div class="console-controls"><button class="movie-btn gold" id="storyPlay" type="button">▶ Reproducir escena</button><button class="movie-btn" id="storyBack" type="button" aria-label="Volver al diálogo anterior">← Anterior</button><button class="movie-btn" id="storyNext" type="button">Siguiente diálogo →</button><button class="movie-btn" id="storyVoice" type="button" aria-pressed="true">🔊 Doblaje: sí</button><button class="movie-btn" id="storySkip" type="button">Saltar a la pregunta ↗</button><button class="movie-btn primary-final" id="storyAccept" type="button" hidden>✧ Sí, acepto sus encargos →</button><button class="movie-btn" id="storyReplay" type="button">↺ Repetir</button><button class="movie-btn" id="storyMotion" type="button" aria-pressed="true" title="Reducir o activar movimientos cinematográficos">🎞 Movimiento: sí</button></div>
+  <div class="film-instruction" id="filmInstruction" role="status"><span class="film-instruction-star" aria-hidden="true">✦</span><span><strong>Empezá por la escena.</strong> Presioná «Reproducir escena» para escuchar a los personajes. También podés pasar una frase a la vez. Al final aparecerá la invitación para entrar al taller.</span></div>
   <div class="voice-row" id="voiceControls"><div class="voice-picker"><span>🎙️ 9 grabaciones originales incorporadas</span></div><div class="voice-info"><span class="voice-indicator" id="voiceState" role="status">Doblaje cargado · listo para empezar</span><small>La Oruga (dos frases) y el coro final esperan grabación: mientras tanto se muestran subtítulos sin voz robótica.</small></div></div>
   <div class="story-progress" id="storyDots" aria-label="Avance del prólogo"></div>
  </div><p class="finale-prompt" id="finalePrompt">Cinco miradas. Una pregunta. La aventura empieza con tu respuesta.</p>
@@ -257,7 +318,7 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
   <div class="character-frame" id="sceneCharacter" aria-hidden="true"></div>
   <div class="stage-dialogue"><div class="dialogue-meta"><span class="stage-label"><span class="dialogue-face" id="dialogueFace" aria-hidden="true">🐇</span><strong id="dialogueName">El Conejo Blanco</strong></span><span class="talk-mark" id="talkMark">01 / 03</span></div><p id="dialogueBody" aria-live="polite"></p><div class="dialogue-foot"><span>✧ UNA HISTORIA POR DESCUBRIR</span><button class="talk-button" type="button" data-click="talk" id="talkBtn">Seguir conversación <span aria-hidden="true">→</span></button></div></div>
  </div>
- <div class="workbench"><div class="workhead"><span>✧ MESA DEL RELOJERO</span><span class="state-pill" id="statePill">Esperando revisión</span></div><div class="tool-dock" id="toolDock" aria-label="Herramientas del taller"></div><div class="art" id="clockArt" aria-label="Ilustración interactiva del reloj"></div><div class="art-caption" id="artCaption">Observá las pistas antes de decidir.</div></div>
+ <div class="workbench"><div class="workbench-halo" aria-hidden="true"></div><div class="workhead"><span>✧ MESA DEL RELOJERO</span><span class="state-pill" id="statePill">Esperando revisión</span></div><div class="workbench-instruction" id="workbenchInstruction"><span class="focus-pulse" aria-hidden="true"></span><span>Tu siguiente acción aparecerá aquí.</span></div><div class="tool-dock" id="toolDock" aria-label="Herramientas del taller"></div><div class="art" id="clockArt" aria-label="Ilustración interactiva del reloj"></div><div class="lens-control"><button class="lens-button" id="benchZoom" type="button" aria-pressed="false">⌕ Ampliar reloj</button><small>El reloj se puede explorar con el dedo o el mouse.</small></div><div class="art-caption" id="artCaption">Observá las pistas antes de decidir.</div></div>
  <div class="task" id="task" aria-live="polite"></div></section>
  <aside class="panel rightbar" id="cuaderno" aria-label="Lecciones de relojería"><div class="section-title">✦ EL CUADERNO DE ALICIA</div><h3>Secretos del relojero</h3><div class="notebook"><div class="book-label">NOTAS PARA APRENDER</div><h4 id="lessonTitle"></h4><ul id="lessonPoints"></ul></div><div class="tip"><strong>✧ La pista del taller</strong><p id="hintText"></p></div><div class="rightquote">Aquí todo parece imposible… hasta que entendés cómo funciona.</div></aside>
  </main>
@@ -290,7 +351,10 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
  caterpillar:`<g stroke="#34666c" stroke-width="3" stroke-linejoin="round"><path d="M45 242Q42 218 69 218Q82 192 104 207Q125 180 144 195Q166 186 182 218L184 249H47Z" fill="#a74e78"/><path d="M43 243Q111 230 186 243" fill="none" stroke="#ffdcad" stroke-width="5"/><circle cx="74" cy="181" r="27" fill="#6eac9b"/><circle cx="118" cy="184" r="33" fill="#69b2a7"/><circle cx="164" cy="175" r="34" fill="#59a59f"/><path d="M54 181Q38 199 38 210M93 194l-13 24M135 195l9 24M183 194l24 19" stroke="#6fbcc0" stroke-width="9" stroke-linecap="round"/><path d="M119 122Q106 90 121 70Q136 55 156 69Q195 54 204 96Q215 141 189 168Q166 186 135 158Z" fill="#83c9bd"/><path d="M130 83q-3-21 9-37M174 78q12-26 27-27" stroke="#93cfc6" stroke-width="6" stroke-linecap="round" fill="none"/><circle cx="147" cy="111" r="8" fill="#eaf9ee"/><circle cx="184" cy="113" r="8" fill="#eaf9ee"/><circle cx="149" cy="111" r="4" fill="#364f62" stroke="none"/><circle cx="185" cy="113" r="4" fill="#364f62" stroke="none"/><path d="M153 141q15 12 32 0" stroke="#3b6d71" fill="none"/><path d="M195 136q18 0 18-18q-2-19-22-30" stroke="#b5b4cc" stroke-width="3" stroke-dasharray="5 8" fill="none"/></g>`,
  cat:`<g stroke="#61426f" stroke-width="3.2" stroke-linejoin="round"><path d="M172 209Q228 213 215 164Q206 146 189 160" fill="none" stroke="#9e79b6" stroke-width="26" stroke-linecap="round"/><path d="M172 209Q228 213 215 164Q206 146 189 160" fill="none" stroke="#d9b0df" stroke-width="6" stroke-dasharray="10 15" stroke-linecap="round"/><path d="M73 153Q55 176 67 218Q110 251 159 218Q176 171 156 152Z" fill="#ac81b9"/><path d="M69 175l91 18M68 199l86 20" stroke="#795489" stroke-width="13"/><path d="M74 155L65 74l43 22 43-16 18 78Z" fill="#b88cc6"/><path d="M70 111L64 57l47 29 46-26 10 60" fill="#b98ecd"/><path d="M66 82l35 25m58-22-35 25" stroke="#dbaed2" stroke-width="7"/><ellipse cx="92" cy="126" rx="20" ry="17" fill="#f5e69e"/><ellipse cx="143" cy="128" rx="20" ry="17" fill="#f5e69e"/><ellipse cx="98" cy="127" rx="6" ry="13" fill="#464057" stroke="none"/><ellipse cx="141" cy="129" rx="6" ry="13" fill="#464057" stroke="none"/><path d="M87 161Q119 184 153 160Q148 202 120 206Q90 196 87 161Z" fill="#fef1df"/><path d="M91 170q29 13 59 0" fill="none" stroke="#875887" stroke-width="3"/><path d="M115 150l11 0-6 9Z" fill="#de91b4"/><path d="M69 148l-32-9m32 18-31 2m123-11 30-9m-29 19 33 3" stroke="#f4e0e1" stroke-width="3"/></g>`,
  queen:`<g stroke="#6b394d" stroke-width="3" stroke-linejoin="round"><path d="M70 198L38 252H192l-30-54Q117 179 70 198Z" fill="#c44f63"/><path d="M86 205l-12 45m81-45 11 45" stroke="#e9abc0" stroke-width="14"/><path d="M73 139L56 200Q113 230 174 201L155 136Z" fill="#f1eee5"/><path d="M79 154l20 42 19-22 17 22 20-43" fill="#d7657d"/><path d="M61 160L31 195m140-36 30 36" stroke="#f0d3c7" stroke-width="12" stroke-linecap="round"/><path d="M65 79Q67 44 112 43Q151 46 165 82L157 128Q111 158 73 125Z" fill="#f5d2ba"/><path d="M64 88q-12-54 45-57 53-3 62 55l-18-12-16-22-20 13-30-10Z" fill="#392b40"/><path d="M79 55l-1-39 22 20 18-30 18 30 23-18-2 41Z" fill="#f1c879" stroke="#a7794b"/><circle cx="119" cy="29" r="7" fill="#e76a85"/><circle cx="95" cy="101" r="6" fill="#443245"/><circle cx="139" cy="101" r="6" fill="#443245"/><path d="M91 88l15 3m27-1 17-2" stroke="#5d344f" stroke-width="5"/><path d="M107 126q12-10 24 0" fill="none" stroke="#b96678" stroke-width="4"/><path d="M119 163c-20-26-46-3 0 34 46-37 20-60 0-34Z" stroke="#fff0e5" fill="#a63353"/></g>`
- };return `<svg viewBox="0 0 230 270" role="img" aria-label="Ilustración animada de ${CASES.find(c=>c.id===id).name}" focusable="false" xmlns="http://www.w3.org/2000/svg">${common}${figures[id]}</svg>`;
+ };const microExpressions={rabbit:[112,133,89,136,106],hatter:[114,127,91,135,104],caterpillar:[170,141,147,185,112],cat:[119,178,91,145,127],queen:[119,126,95,139,102]};
+ const [mouthX,mouthY,eyeX1,eyeX2,eyeY]=microExpressions[id];
+ const faceOverlay=`<g class="actor-face" aria-hidden="true"><ellipse class="actor-mouth" cx="${mouthX}" cy="${mouthY}" rx="7" ry="5" fill="#603349" stroke="#e9b6b4" stroke-width="1.6"/><path class="actor-teeth" d="M${mouthX-4} ${mouthY-1}h8" stroke="#ffede1" stroke-width="2"/><path class="actor-eyelid left" d="M${eyeX1-6} ${eyeY}h12" stroke="#4f354e" stroke-width="6"/><path class="actor-eyelid right" d="M${eyeX2-6} ${eyeY}h12" stroke="#4f354e" stroke-width="6"/></g>`;
+ return `<svg viewBox="0 0 230 270" role="img" aria-label="Ilustración animada de ${CASES.find(c=>c.id===id).name}" focusable="false" xmlns="http://www.w3.org/2000/svg">${common}${figures[id]}${faceOverlay}</svg>`;
  }
  const TOOLS={rabbit:[['key','🗝️','Llave de cuerda','crown']],hatter:[['swab','🧽','Hisopo','contacts'],['battery','🔋','Pila (+)','battery']],caterpillar:[['weight','🟡','Contrapeso','pendulum']],cat:[['gear-b','⚙️','Rueda B','gear-b'],['gear-c','⚙️','Rueda C','gear-c']],queen:[]};
  let dialogueBeat=0,selectedTool=null,dragState=null,activeHand=null;
@@ -315,7 +379,7 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
  const STAGES=['Visita','Inspección','Diagnóstico','Reparación','¡Listo!'];
  function getCase(){return CASES[current]}
  function progress(){let done=CASES.filter(c=>!!saved[c.id]).length;let stars=CASES.reduce((n,c)=>n+(saved[c.id]?.stars||0),0);$('progressText').textContent=`${done} de ${CASES.length}`;$('progressBar').style.width=(done/CASES.length*100)+'%';$('stars').textContent=`✦ ${stars} estrellas`;}
- function switchCase(i){current=i;phase='welcome';changePhaseDialogue();selectedTool=null;errors=0;notice='';noticeKind='info';repairs={winds:0,clean:0,polarity:null,length:52,b:'cw',c:'ccw',minute:120};render();replayArrival();}
+ function switchCase(i){if($('clockArt'))$('clockArt').classList.remove('magnified');if($('benchZoom')){$('benchZoom').textContent='⌕ Ampliar reloj';$('benchZoom').setAttribute('aria-pressed','false');}current=i;phase='welcome';changePhaseDialogue();selectedTool=null;errors=0;notice='';noticeKind='info';repairs={winds:0,clean:0,polarity:null,length:52,b:'cw',c:'ccw',minute:120};render();replayArrival();}
  function miniTone(freq=520){if(!soundOn)return;try{audioCtx??=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(.0001,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.06,audioCtx.currentTime+.015);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.19);o.connect(g).connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.21);}catch{soundOn=false;}}
  function note(msg,kind='info'){notice=msg;noticeKind=kind;renderTaskOnly();}
  function diagnose(index){let c=getCase();if(index===c.answer){phase='repair';changePhaseDialogue();notice=c.why;noticeKind='good';miniTone(650);render();}else{errors++;miniTone(230);note(c.wrong,'bad');}}
@@ -358,7 +422,7 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
  $('task').innerHTML=text;toolBar();
  const slider=$('pendulum');if(slider)slider.addEventListener('input',e=>{repairs.length=Number(e.target.value);const drift=(62-repairs.length)*1.4;$('lengthVal').textContent=String(repairs.length);$('driftVal').textContent=(drift>0?'+':'')+drift.toFixed(1)+' min/d';$('driftText').textContent=Math.abs(drift)<=1.4?'Ritmo casi perfecto':drift>0?'El reloj adelanta':'El reloj atrasa';});}
  function render(){let c=getCase();$('clockArt').closest('.main').dataset.visitor=c.id;progress();$('clients').innerHTML=CASES.map((item,i)=>`<button type="button" class="client ${current===i?'active':''}" data-case="${i}" ${i>0&&!saved[CASES[i-1].id]?'disabled title="Terminá el encargo anterior para continuar"':''} aria-label="${item.name}, ${saved[item.id]?'reparado':'sin completar'}" aria-current="${i===current?'true':'false'}"><span class="avatar" style="--avatar:${item.color}">${item.emoji}</span><span class="client-text"><strong>${item.short}</strong><small>${saved[item.id]?'Reparado · '+saved[item.id].stars+' ★':item.type.split(' · ')[0]}</small></span><span class="client-check" aria-hidden="true">${saved[item.id]?'✓':'›'}</span></button>`).join('');
- $('arrivalStage').dataset.visitor=c.id;$('sceneCharacter').dataset.person=c.id;$('sceneCharacter').innerHTML=characterSvg(c.id);$('caseTag').textContent=`ENCARGO ${String(current+1).padStart(2,'0')} · ${phase==='solved'?'COMPLETADO':'LA VISITA'}`;$('caseNo').textContent=String(current+1).padStart(2,'0');$('caseName').textContent=c.name;$('caseType').textContent=c.type;$('dialogueFace').textContent=c.emoji;$('dialogueName').textContent=c.name+' dice...';renderDialogue();$('statePill').textContent=labelPhase();renderCoach();$('clockArt').innerHTML=clockSvg(c);$('artCaption').textContent=phase==='welcome'?'Escuchá al visitante. Luego aceptá e inspeccioná su reloj.':phase==='inspect'?'Inspección realizada: ahora elegí el diagnóstico.':phase==='repair'?'Primero elegí una herramienta; después tocá el círculo brillante del reloj.':'El reloj volvió a funcionar.';$('lessonTitle').textContent=c.lesson;$('lessonPoints').innerHTML=c.points.map(p=>`<li>${p}</li>`).join('');$('hintText').textContent=phase==='repair'?c.hint:phase==='solved'?'¡Excelente! Podés avanzar o repetir para conseguir más estrellas.':'Primero escuchá al cliente. Una buena reparación empieza por observar y formular una hipótesis.';renderSteps();renderTaskOnly();}
+ $('arrivalStage').dataset.visitor=c.id;$('sceneCharacter').dataset.person=c.id;$('sceneCharacter').innerHTML=characterSvg(c.id);$('caseTag').textContent=`ENCARGO ${String(current+1).padStart(2,'0')} · ${phase==='solved'?'COMPLETADO':'LA VISITA'}`;$('caseNo').textContent=String(current+1).padStart(2,'0');$('caseName').textContent=c.name;$('caseType').textContent=c.type;$('dialogueFace').textContent=c.emoji;$('dialogueName').textContent=c.name+' dice...';renderDialogue();$('statePill').textContent=labelPhase();renderCoach();$('clockArt').innerHTML=clockSvg(c);$('artCaption').textContent=phase==='welcome'?'Escuchá al visitante. Luego aceptá e inspeccioná su reloj.':phase==='inspect'?'Inspección realizada: ahora elegí el diagnóstico.':phase==='repair'?'Primero elegí una herramienta; después tocá el círculo brillante del reloj.':'El reloj volvió a funcionar.';$('lessonTitle').textContent=c.lesson;$('lessonPoints').innerHTML=c.points.map(p=>`<li>${p}</li>`).join('');$('hintText').textContent=phase==='repair'?c.hint:phase==='solved'?'¡Excelente! Podés avanzar o repetir para conseguir más estrellas.':'Primero escuchá al cliente. Una buena reparación empieza por observar y formular una hipótesis.';renderSteps();renderTaskOnly();renderWorkbenchInstruction();}
  function action(k){if(k==='talk'){dialogueBeat=(dialogueBeat+1)%dialogueScript().length;renderDialogue();miniTone(550);return;}if(k==='inspect'&&phase==='welcome'){inspect();setTimeout(()=>$('task').scrollIntoView({behavior:'smooth',block:'center'}),80);}else if(k==='wind'&&phase==='repair'&&getCase().id==='rabbit'){repairs.winds=Math.min(6,repairs.winds+1);miniTone(330+repairs.winds*45);notice='';renderTaskOnly();}else if(k==='clean'&&phase==='repair'){repairs.clean=Math.min(3,repairs.clean+1);miniTone(480);notice='';renderTaskOnly();}else if(k==='positive'||k==='negative'){repairs.polarity=k==='positive'?'up':'down';notice='';miniTone(420);renderTaskOnly();}else if(k==='gear-b'||k==='gear-c'){let field=k==='gear-b'?'b':'c';repairs[field]=repairs[field]==='cw'?'ccw':'cw';notice='';miniTone(540);render();}else if(k==='hour'){repairs.minute=(repairs.minute+60)%720;notice='';miniTone(520);render();}else if(k==='quarter'){repairs.minute=(repairs.minute+15)%720;notice='';miniTone(570);render();}else if(k==='undo-quarter'){repairs.minute=(repairs.minute-15+720)%720;notice='';miniTone(440);render();}else if(k==='test'&&phase==='repair')validate();else if(k==='repeat'){switchCase(current);setTimeout(()=>$('caseName').scrollIntoView({behavior:'smooth',block:'start'}),80);}else if(k==='next'){switchCase((current+1)%CASES.length);setTimeout(()=>$('caseName').scrollIntoView({behavior:'smooth',block:'start'}),80);}if(phase==='repair'&&['wind','clean','positive','negative'].includes(k))refreshClock();}
  $('clockArt').addEventListener('pointerdown',handleDialPointer);
  document.addEventListener('pointermove',e=>{moveToolDrag(e);updateDial(e);},{passive:false});
@@ -368,6 +432,11 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
  document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-drop-zone]')){e.preventDefault();applyTool(selectedTool,e.target.dataset.dropZone);}});
  document.addEventListener('click',e=>{const zone=e.target.closest('[data-drop-zone]');if(zone&&phase==='repair'){applyTool(selectedTool,zone.dataset.dropZone);return;}const token=e.target.closest('[data-tool]');if(token&&phase==='repair'){selectedTool=token.dataset.tool;toolBar();return;}let selected=e.target.closest('[data-case]');if(selected){switchCase(Number(selected.dataset.case));return;}let diag=e.target.closest('[data-diagnosis]');if(diag&&phase==='inspect'){diagnose(Number(diag.dataset.diagnosis));if(phase==='repair')setTimeout(()=>$('toolDock').scrollIntoView({behavior:'smooth',block:'center'}),80);return;}let elem=e.target.closest('[data-click], [data-action]');if(elem)action(elem.dataset.click||elem.dataset.action);});
  document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-action]')){e.preventDefault();action(e.target.dataset.action);}});
+ $('benchZoom').addEventListener('click',()=>{
+   const art=$('clockArt'),active=art.classList.toggle('magnified');
+   $('benchZoom').setAttribute('aria-pressed',String(active));
+   $('benchZoom').textContent=active?'− Volver a tamaño normal':'⌕ Ampliar reloj';
+ });
  $('sound').addEventListener('click',()=>{soundOn=!soundOn;$('sound').textContent=`♫ Sonido: ${soundOn?'sí':'no'}`;$('sound').setAttribute('aria-pressed',String(soundOn));miniTone(670);});
  $('reset').addEventListener('click',()=>{if(window.confirm('¿Borrar las estrellas y los encargos completados?')){saved={};try{localStorage.removeItem(STORAGE_KEY)}catch{}switchCase(0);}});
 
@@ -405,6 +474,21 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
  ];
  const filmWho={narrator:'Narrador',rabbit:'Conejo Blanco',hatter:'Sombrerero Loco',caterpillar:'Oruga Azul',cat:'Gato de Cheshire',queen:'Reina de Corazones',all:'Todos los visitantes'};
  const focusByPerson={rabbit:'18%',hatter:'31%',caterpillar:'49%',cat:'69%',queen:'82%',all:'50%',narrator:'50%'};
+ const cameraShots={narrator:['50%','1','PLANO GENERAL · EL TIEMPO SE DETIENE'],rabbit:['18%','1.11','PRIMER PLANO · EL CONEJO BLANCO'],hatter:['31%','1.09','PRIMER PLANO · EL SOMBRERERO'],caterpillar:['49%','1.12','PLANO CERCANO · LA ORUGA'],cat:['69%','1.11','PRIMER PLANO · EL GATO'],queen:['82%','1.11','PRIMER PLANO · LA REINA'],all:['50%','1.015','PLANO CORAL · TU DECISIÓN']};
+ let filmMotion=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function applyShot(who){
+   const [focus,zoom,title]=cameraShots[who]||cameraShots.narrator;
+   const shell=$('cinema');shell.style.setProperty('--camera-focus',focus);shell.style.setProperty('--camera-zoom',filmMotion?zoom:'1');
+   shell.classList.toggle('motion-reduced',!filmMotion);
+   $('shotIndicator').textContent=title;
+   const toggle=$('storyMotion');if(toggle){toggle.textContent=filmMotion?'🎞 Movimiento: sí':'▣ Movimiento: reducido';toggle.setAttribute('aria-pressed',String(filmMotion));}
+ }
+ 
+ function renderWorkbenchInstruction(){
+  const c=getCase(),el=$('workbenchInstruction');if(!el)return;
+  const guide={welcome:'PASO 1 · Escuchá al visitante. El botón «Aceptar e inspeccionar reloj» está debajo del reloj.',inspect:'PASO 2 · Leé la pista y elegí el diagnóstico en la tarjeta de abajo.',repair:c.id==='rabbit'?`PASO 3 · Girá la corona 6 veces con el botón «Girar corona» o con la llave sobre el reloj.`:c.id==='hatter'?'PASO 3 · Limpiá 3 veces los contactos, después colocá la pila con el polo positivo hacia arriba.':c.id==='caterpillar'?'PASO 3 · Ajustá la longitud del péndulo hasta que el error de marcha sea casi cero.':c.id==='cat'?'PASO 3 · Alterná los sentidos de giro de B y C, y probá el engranaje.':'PASO 3 · Mové las agujas hasta marcar las 06:30.',solved:'PASO 4 · ¡Reloj reparado! Tocá «Siguiente visitante» para continuar.'};
+  el.innerHTML=`<span class="focus-pulse" aria-hidden="true"></span><span>${guide[phase]}</span>`;
+ }
  function renderCoach(){let c=getCase();const levels={welcome:['Escuchá qué le ocurre a su reloj y aceptá inspeccionarlo.','01 / 04'],inspect:['El reloj te mostró una pista: elegí el diagnóstico que mejor la explica.','02 / 04'],repair:[c.id==='queen'?'Usá los botones o arrastrá las agujas. Buscá las 06:30.':`Seguí el procedimiento de ${c.name}. Usá los controles de la tarjeta y tocá las zonas brillantes si querés.`, '03 / 04'],solved:['¡Excelente! Ya sabés algo nuevo. Tocá «Siguiente visitante» para continuar.','04 / 04']};const [message,stage]=levels[phase];const el=$('coach');if(el)el.innerHTML=`<div class="coach-star" aria-hidden="true">✦</div><div><strong>Tu siguiente paso está acá</strong><p>${message}</p></div><button class="coach-jump" type="button" data-click="guide-next">Ver acción ↓</button><span class="coach-number">${stage}</span>`;}
  function stopPlayback(){
    filmSession++;
@@ -424,7 +508,7 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
    else if(!path && line.who==='caterpillar')state.textContent='Oruga Azul: audio pendiente · subtítulos activos';
    else if(!path && line.who==='all')state.textContent='Pregunta final: coro pendiente · subtítulos activos';
    else if(currentAudio && !currentAudio.paused)state.textContent='Reproduciendo la grabación de '+filmWho[line.who]+'…';
-   else state.textContent='Doblaje original listo · '+filmWho[line.who];
+   else state.textContent='Listo para reproducir · '+filmWho[line.who];
  }
  function advanceAfterAudio(session){
    if(session!==filmSession||!filmPlaying)return;
@@ -462,35 +546,51 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
    if(promise&&typeof promise.catch==='function')promise.catch(()=>finished(true));
    updateFilmControls();
  }
- function renderCinema(){const line=MOVIE_LINES[filmIndex],final=line.who==='all',who=line.who;const shell=$('cinema');shell.dataset.speaker=who;shell.classList.toggle('finale',final);shell.classList.toggle('is-speaking',filmPlaying);shell.style.setProperty('--spot-x',focusByPerson[who]||'50%');
+ function renderCinema(){const line=MOVIE_LINES[filmIndex],final=line.who==='all',who=line.who;const shell=$('cinema');applyShot(who);shell.dataset.speaker=who;shell.classList.toggle('finale',final);shell.classList.toggle('is-speaking',filmPlaying);shell.style.setProperty('--spot-x',focusByPerson[who]||'50%');
  const cast=$('movieCast');for(const figure of cast.querySelectorAll('.movie-character')){const active=!final && figure.dataset.person===who;const ownIndex=CASES.findIndex(c=>c.id===figure.dataset.person);const speakIndex=CASES.findIndex(c=>c.id===who);figure.style.setProperty('--idle',final?'0deg':who==='narrator'?(ownIndex<2?'24deg':'-24deg'):active?'0deg':(speakIndex>ownIndex?'25deg':'-25deg'));figure.classList.toggle('active',active);figure.classList.toggle('reacting',lastSpeaker===figure.dataset.person&&!active&&!final);}
  const bubble=$('sceneBubble');bubble.classList.remove('visible');bubble.style.setProperty('--bubble-x',focusByPerson[who]||'50%');$('bubbleName').textContent=filmWho[who];$('bubbleText').textContent=final?'¿Aceptás nuestros encargos?':(who==='narrator'?'✦ Y así comenzó la historia…':line.text);
  requestAnimationFrame(()=>bubble.classList.add('visible'));
- $('filmWho').textContent=(final?'UNA SOLA PREGUNTA · TODOS TE MIRAN':`${filmWho[who]} · ESCENA ${String(filmIndex+1).padStart(2,'0')}`);$('filmWords').textContent=line.text;$('filmCount').textContent=String(filmIndex+1).padStart(2,'0');$('storyDots').innerHTML=MOVIE_LINES.map((l,i)=>`<span class="story-dot ${i<filmIndex?'past':i===filmIndex?'current':''}" aria-hidden="true"></span>`).join('');$('storyNext').hidden=final;$('storyPlay').hidden=final;$('storyAccept').hidden=!final;$('finalePrompt').classList.toggle('show',final);$('storyNext').textContent=filmIndex===MOVIE_LINES.length-2?'Ver la pregunta →':'Siguiente diálogo →';lastSpeaker=who;updateFilmControls();
+ $('filmWho').textContent=(final?'UNA SOLA PREGUNTA · TODOS TE MIRAN':`${filmWho[who]} · ESCENA ${String(filmIndex+1).padStart(2,'0')}`);$('filmWords').textContent=line.text;$('filmCount').textContent=String(filmIndex+1).padStart(2,'0');$('storyDots').innerHTML=MOVIE_LINES.map((l,i)=>`<span class="story-dot ${i<filmIndex?'past':i===filmIndex?'current':''}" aria-hidden="true"></span>`).join('');$('storyBack').disabled=filmIndex===0;$('storyNext').hidden=final;$('storyPlay').hidden=final;$('storyAccept').hidden=!final;$('finalePrompt').classList.toggle('show',final);$('storyNext').textContent=filmIndex===MOVIE_LINES.length-2?'Ver la pregunta →':'Siguiente diálogo →';
+ const instruction=$('filmInstruction');if(instruction)instruction.innerHTML=final?'<span class="film-instruction-star">✦</span><span><strong>Ahora decidís vos.</strong> Mirá la pregunta y presioná el botón dorado «Sí, acepto sus encargos» para entrar al taller.</span>':filmIndex===0?'<span class="film-instruction-star">✦</span><span><strong>Tu película comienza acá.</strong> Reproducí la escena para escuchar todas las voces, o avanzá una frase a la vez. Podés pausar cuando quieras.</span>':`<span class="film-instruction-star">✦</span><span><strong>Turno ${filmIndex+1} de ${MOVIE_LINES.length}.</strong> ${filmWho[who]} habla. Podés escuchar el clip completo o pasar al siguiente diálogo con el botón.</span>`;
+ lastSpeaker=who;updateFilmControls();
  }
  function stopCinema(){filmPlaying=false;stopPlayback();updateFilmControls();}
+ function previousCinema(){
+   const keepAuto=filmPlaying;
+   stopPlayback();
+   if(filmIndex>0){filmIndex--;filmPlaying=keepAuto;renderCinema();if(keepAuto)playCurrentLine();}
+   else {filmPlaying=false;renderCinema();}
+ }
  function nextCinema(){
    const keepAuto=filmPlaying;
    stopPlayback();
-   if(filmIndex<MOVIE_LINES.length-1){filmIndex++;filmPlaying=keepAuto;renderCinema();playCurrentLine();}
+   if(filmIndex<MOVIE_LINES.length-1){filmIndex++;filmPlaying=keepAuto;renderCinema();if(keepAuto)playCurrentLine();}
  }
  function acceptCinema(){stopCinema();const world=$('taller');world.hidden=false;const first=CASES.findIndex(c=>!saved[c.id]);const selected=first===-1?0:first;switchCase(selected);setTimeout(()=>world.scrollIntoView({behavior:'smooth',block:'start'}),70);}
  function setupCinema(){const cast=$('movieCast');cast.innerHTML=CASES.map(c=>`<div class="movie-character" data-person="${c.id}" role="img" aria-label="${c.name} sentado en la mesa del té"><span class="speech-rune" aria-hidden="true">✦ ♫</span>${characterSvg(c.id)}<span class="guest-name">${c.short}</span></div>`).join('');const stars=$('movieStars');stars.innerHTML=Array.from({length:35},(_,i)=>`<i class="scene-star" style="--sx:${(i*97+23)%99}%;--sy:${(i*41+9)%95}%;--size:${(i%3)+2}px;--delay:${-(i*7%13)/3}s;--t:${(i%5)+3}s"></i>`).join('');renderCinema();
  $('storyNext').addEventListener('click',nextCinema);
+ $('storyBack').addEventListener('click',previousCinema);
+ $('storyMotion').addEventListener('click',()=>{filmMotion=!filmMotion;applyShot(MOVIE_LINES[filmIndex].who);});
+ $('cinema').addEventListener('keydown',e=>{
+   if(e.target!==e.currentTarget)return;
+   if(e.key==='ArrowRight'){e.preventDefault();nextCinema();}
+   else if(e.key==='ArrowLeft'){e.preventDefault();previousCinema();}
+   else if(e.key==='Escape'){e.preventDefault();stopCinema();}
+ });
  $('storyPlay').addEventListener('click',()=>{
    if(filmPlaying){stopCinema();return;}
    if(filmIndex===MOVIE_LINES.length-1)return;
    filmPlaying=true;renderCinema();playCurrentLine();
  });
  $('storyVoice').addEventListener('click',()=>{
-   filmVoices=!filmVoices;playCurrentLine();updateFilmControls();
+   filmVoices=!filmVoices;if(filmPlaying)playCurrentLine();else stopPlayback();updateFilmControls();
  });
  $('storySkip').addEventListener('click',()=>{
    stopCinema();filmIndex=MOVIE_LINES.length-1;renderCinema();
  });
  $('storyAccept').addEventListener('click',acceptCinema);
  $('storyReplay').addEventListener('click',()=>{
-   stopCinema();filmIndex=0;lastSpeaker=null;renderCinema();playCurrentLine();
+   stopCinema();filmIndex=0;lastSpeaker=null;renderCinema();
  });
  // Al abandonar la pestaña se corta la reproducción, no se deja una voz sin control.
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&filmPlaying)stopCinema();});
@@ -537,7 +637,7 @@ html{scroll-behavior:smooth}body{background:#0e101e;color:var(--ivory)}
  sound.addEventListener('click',()=>{withSound=!withSound;el.muted=!withSound;el.volume=.65;sound.textContent=withSound?'♫ Sonido de los videos: sí':'♫ Sonido de los videos: no';sound.setAttribute('aria-pressed',String(withSound));});
  el.addEventListener('timeupdate',()=>{const d=el.duration||0;progress.style.width=(d?Math.min(100,Math.max(0,100*el.currentTime/d)):0)+'%';});
  el.addEventListener('ended',()=>{playing=false;play.textContent='↺ Repetir escena';state.textContent='Escena terminada';screen.classList.add('finished');if(index===0){switchClip(1,true);}else{screen.classList.add('school-finale');state.textContent='¡Prólogo completo! Entrá a la mesa del té.';enter();}});
- el.addEventListener('error',()=>{playing=false;state.textContent='Video no disponible: cargá los archivos en media/ o entrá a la mesa del té.';});
+ el.addEventListener('error',()=>{playing=false;state.textContent='No se pudo reproducir este video. Podés ir directamente a la historia.';});
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing){el.pause();playing=false;play.textContent='▶ Continuar escena';}});
  render();
 })();
